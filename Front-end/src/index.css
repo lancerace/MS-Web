@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height:"1.42857143";
+  min-Height:'100vh';
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.background{
+  -webkit-background-size: cover;
+  /*background: url(../../assets/image/pidgey_pidgeotto_flying_above_swimming_magikarp_pokemon_go_background.jpg) no-repeat center center fixed;*/
+  /*background: url(../../assets/image/maplestory_background___pantheon_by_thehardworkingaj_d7mmhde-pre.png) no-repeat center center fixed;*/
+  /*background: url(../../assets/image/maple_bg1.jpg) no-repeat center center fixed;*/
+  z-index: -1;
+  background: url(./assets/image/maple_bg2.jpg) no-repeat center center fixed;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
