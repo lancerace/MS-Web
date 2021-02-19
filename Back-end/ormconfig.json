@@ -1,0 +1,25 @@
+{
+    "type": "mysql",
+    "host": "ec2-34-198-103-34.compute-1.amazonaws.com",
+    "port": 5432,
+    "username": "bylbcdbmrkhomm",
+    "password": "0b3ed133b5c525df77f2e1dabdc6eaf1919df7ad13e317e7b411b75e926ffd3f",
+    "database": "d3tl58k4k5k6cn",
+    "synchronize": true,
+    "logging": false,
+    "ssl": { "rejectUnauthorized": false },
+    "entities": [
+       "src/entity/**/*.ts"
+    ],
+    "migrations": [
+       "src/migration/**/*.ts"
+    ],
+    "subscribers": [
+       "src/subscriber/**/*.ts"
+    ],
+    "cli": {
+       "entitiesDir": "src/entity",
+       "migrationsDir": "src/migration",
+       "subscribersDir": "src/subscriber"
+    }
+ }
