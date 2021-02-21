@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import style from './styles.module.css';
 import logo from '../../assets/image/Maplestory_logo.png';
+import Axios from 'axios';
+
 // prettier-ignore
 import {
   makeStyles, Link, Typography, TextField, Button, Grid
@@ -17,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   contentContainer: {
-    '& > div': { padding: '2vh' },
+    '& > div': { padding: '1vh' },
   },
   success: {
     backgroundColor: '#1db954',
@@ -25,47 +28,39 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+interface IState {
+  username: string;
+  usernameErr: boolean;
+  password: string;
+  passwordErr: boolean;
+  email: string;
+}
 export default function Login() {
-  const monthArray = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-
-  const [age, setAge] = useState('');
-  const handleChange = event => {
-    setAge(event.target.value);
-  };
+  const history = useHistory();
+  const [state, setState] = useState<IState>({
+    username: "", usernameErr: false,
+    password: "", passwordErr: false,
+    email: ""
+  });
 
   const { mainContainer, contentContainer, success } = useStyles();
   return (
     <Grid container className={[mainContainer, style.background].join(' ')} justify="center" >
 
-
       <Grid container justify="center" alignItems="center">
         <a href={`${process.env.REACT_APP_BASE_URL}`} style={{ textAlign: "center" }}>
-          <img src={logo} alt="logo" width="22%" style={{ border: "0px solid black",marginTop:"1.5vh" }}></img>
+          <img src={logo} alt="logo" width="22%" style={{ border: "0px solid black", marginTop: "1.5vh" }}></img>
         </a>
       </Grid>
 
-
-      <Grid container md={8} alignItems="center" style={{ border: '0px solid red', backgroundColor: "white", borderRadius: "10px", height: "80vh" }} justify="center" >
-
+      <Grid container item md={8} alignItems="center" style={{ border: '0px solid red', backgroundColor: "white", borderRadius: "10px", height: "80vh" }} justify="center" >
         <Grid className={contentContainer} item md={4} style={{ border: '0px solid red' }}>
           <Grid container item md={12} justify="center">
             <Typography variant="subtitle2" />
           </Grid>
           <Grid item md={12} container justify="center">
             <Button
+              disabled
               fullWidth
               color="primary"
               variant="contained"
@@ -80,10 +75,33 @@ export default function Login() {
             </div>
           </Grid>
           <Grid item md={12}>
-            <TextField fullWidth label="Email or Username" variant="outlined" />
+            <TextField fullWidth label="Username" variant="outlined"
+              error={state.usernameErr}
+              helperText={state.usernameErr ? 'Please fill in username!' : ''}
+              value={state.username} onChange={(e) => {
+                if (e.target.value === "")
+                  setState({ ...state, usernameErr: true, username: e.target.value })
+                else
+                  setState({ ...state, username: e.target.value, usernameErr: false })
+              }} />
           </Grid>
           <Grid item md={12}>
-            <TextField fullWidth label="Password" variant="outlined" />
+            <TextField fullWidth label="Password" variant="outlined"
+              error={state.passwordErr}
+              helperText={state.passwordErr ? 'Please fill in password!' : ''}
+              value={state.password} onChange={(e) => {
+                if (e.target.value === "")
+                  setState({ ...state, passwordErr: true, password: e.target.value })
+                else
+                  setState({ ...state, password: e.target.value, passwordErr: false })
+              }} />
+          </Grid>
+
+          <Grid item md={12}>
+            <TextField fullWidth label="Email" variant="outlined"
+              value={state.email} onChange={(e) => {
+                setState({ ...state, email: e.target.value })
+              }} />
           </Grid>
 
           <Grid md={12} item>
@@ -92,7 +110,6 @@ export default function Login() {
             <Link
                 href="/terms-and-condition"
                 onClick={() => {
-                  console.log('test click');
                 }}>
                 Terms and Conditions&nbsp;
             </Link>
@@ -100,7 +117,6 @@ export default function Login() {
             <Link
                 href="/privacy-policy"
                 onClick={() => {
-                  console.log('test click');
                 }}>
                 Privacy Policy.
             </Link>
@@ -108,6 +124,25 @@ export default function Login() {
           </Grid>
           <Grid item md={12}>
             <Button
+              onClick={async () => {
+                if (state.username.length !== 0 && state.password.length !== 0) {
+                  const { data } = await Axios.post(`${process.env.REACT_APP_MSLANCER_BASE_URL}/auth/register`,
+                    { username: state.username, password: state.password, email: state.email });
+
+                  console.log(data.affectedRows);
+                  if (data.code === "ER_DUP_ENTRY")
+                    alert("Account already exist!");
+                  else
+                    if (data.affectedRows > 0) {
+                      alert("welcome to maplestory");
+                      history.push("/home");
+                    }
+                    else
+                      alert("A problem has occurred while registering, please contact the GM");
+                }
+                else
+                  setState({ ...state, usernameErr: true, passwordErr: true })
+              }}
               classes={{
                 containedPrimary: success,
               }}
@@ -124,10 +159,7 @@ export default function Login() {
             <Typography variant="body2" align="center">
               Already have an account?&nbsp;
             <Link
-                href="/login"
-                onClick={() => {
-                  console.log('test click');
-                }}>
+                href="/login">
                 Log in
             </Link>
             </Typography>
@@ -137,8 +169,5 @@ export default function Login() {
         </Grid>
       </Grid>
 
-    </Grid>
-
-
-  );
+    </Grid>);
 }

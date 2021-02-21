@@ -61,7 +61,7 @@ export default function Login() {
           <Grid item md={12}>
             <TextField fullWidth label="Username" variant="outlined"
               error={state.usernameErr}
-              helperText={state.usernameErr ? 'Please fill in username!' : ' '}
+              helperText={state.usernameErr ? 'Please fill in username!' : ''}
               value={state.username} onChange={(e) => {
                 if (e.target.value === "")
                   setState({ ...state, usernameErr: true, username: e.target.value })
@@ -72,7 +72,7 @@ export default function Login() {
           <Grid item md={12}>
             <TextField fullWidth label="Password" variant="outlined"
               error={state.passwordErr}
-              helperText={state.passwordErr ? 'Please fill in password!' : ' '}
+              helperText={state.passwordErr ? 'Please fill in password!' : ''}
               value={state.password} onChange={(e) => {
                 if (e.target.value === "")
                   setState({ ...state, passwordErr: true, password: e.target.value })
@@ -90,7 +90,7 @@ export default function Login() {
                   if (data.password_match) {
                     localStorage.setItem("account", JSON.stringify(data.account));
                     alert("welcome to maplestory");
-                    //history.push("/home");
+                    history.push("/home");
                   }
                   else
                     alert("invalid password");

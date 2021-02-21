@@ -48,9 +48,9 @@ router.post('/register', async (req: express.Request, res: express.Response) => 
     res.json({ affectedRows: raw.affectedRows, id: raw.insertId })
   } catch (err) {
     if (err.code === 'ER_DUP_ENTRY')
-      res.status(500).send({ affectedRows: 0, code: "ER_DUP_ENTRY" });
+      res.status(200).send({ affectedRows: 0, code: "ER_DUP_ENTRY" });
     else
-      res.status(500).send({ affectedRows: 0, code: err.code });
+      res.status(400).send({ affectedRows: 0, code: err.code });
   }
 
 
