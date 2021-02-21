@@ -10,7 +10,14 @@ import { createConnection } from 'typeorm';
 const app = express();
 app.use(json());
 app.use(urlencoded({ extended: true }));
-app.use(cors());
+//app.use(cors());
+
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');
+    next();
+});
 
 //run script
 //automateDB();

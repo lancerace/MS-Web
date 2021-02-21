@@ -1,0 +1,21 @@
+.divider {
+    border-top:1px solid #d9dadc;
+    line-height: 1px;
+    text-align:center;
+}
+.divider > strong {
+     padding: 0 20px;
+     letter-spacing: 1px;
+     font-size: 13px;
+     text-transform:uppercase;
+     background:white;
+}
+
+.background{
+    -webkit-background-size: cover;
+    background: url(../../assets/image/background_1.jpg) no-repeat center center fixed;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+

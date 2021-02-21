@@ -5,7 +5,7 @@ import React from 'react';
 import NavBar from './components/NavBar/NavBar';
 import Grid from '@material-ui/core/Grid';
 import Ranking from './pages/Home/Ranking';
-
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
             <NavBar.Item to="/ranking">Ranking</NavBar.Item>
             <NavBar.Item to="/">Vote</NavBar.Item>
             
-            <NavBar.Item to="/">Log In</NavBar.Item>
+            <NavBar.Item to="/Login">Log In</NavBar.Item>
             <NavBar.Item to="/Signup">Register</NavBar.Item>
           </NavBar>
         </Grid>
@@ -26,6 +26,7 @@ function App() {
           <Switch>
             <Route path="/ranking" component={Ranking} />
             <Route path="/" component={Home} />
+            <Route path="/Login" component={Login}/>
           </Switch>
       </Grid>
   );
