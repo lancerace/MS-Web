@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   contentContainer: {
-    '& > div': { padding: '2vh' },
+    '& > div': { padding: '1vh' },
   },
   success: {
     backgroundColor: '#1db954',
@@ -27,19 +27,20 @@ const useStyles = makeStyles(theme => ({
 }));
 interface IState {
   username: string;
+  usernameErr: boolean;
   password: string;
+  passwordErr: boolean;
 }
 
-
 export default function Login() {
-
-  const [state, setState] = useState<IState>({ username: "", password: "" });
-
+  const [state, setState] = useState<IState>({
+    username: "", usernameErr: false,
+    password: "", passwordErr: false
+  });
 
   const { mainContainer, contentContainer, success } = useStyles();
   return (
     <Grid container className={[mainContainer, style.background].join(' ')} justify="center" >
-
 
       <Grid container justify="center" alignItems="center">
         <a href={`${process.env.REACT_APP_BASE_URL}`} style={{ textAlign: "center" }}>
@@ -47,9 +48,7 @@ export default function Login() {
         </a>
       </Grid>
 
-
       <Grid container md={8} item alignItems="center" style={{ border: '0px solid red', backgroundColor: "white", borderRadius: "10px", height: "80vh" }} justify="center" >
-
         <Grid className={contentContainer} item md={4} style={{ border: '0px solid red' }}>
           <Grid container item md={12} justify="center">
             <Typography variant="h4">Welcome back!</Typography>
@@ -59,18 +58,38 @@ export default function Login() {
             </div>
           </Grid>
           <Grid item md={12}>
-            <TextField fullWidth label="Email or Username" variant="outlined" onChange={ ()=>{}} />
+            <TextField fullWidth label="Username" variant="outlined"
+              error={state.usernameErr}
+              helperText={state.usernameErr ? 'Please fill in username!' : ' '}
+              value={state.username} onChange={(e) => {
+                if (e.target.value === "")
+                  setState({ ...state, usernameErr: true, username: e.target.value })
+                else
+                  setState({ ...state, username: e.target.value, usernameErr: false })
+              }} />
           </Grid>
           <Grid item md={12}>
-            <TextField fullWidth label="Password" variant="outlined" />
+            <TextField fullWidth label="Password" variant="outlined"
+              error={state.passwordErr}
+              helperText={state.passwordErr ? 'Please fill in password!' : ' '}
+              value={state.password} onChange={(e) => {
+                if (e.target.value === "")
+                  setState({ ...state, passwordErr: true, password: e.target.value })
+                else
+                  setState({ ...state, password: e.target.value, passwordErr: false })
+              }} />
           </Grid>
-
           <Grid item md={12}>
             <Button
               onClick={async (e) => {
-                console.log(e);
-               const data = await Axios.post(`${process.env.REACT_APP_MSLANCER_BASE_URL}/characters`);
-console.log(data);
+                if (state.username.length !== 0 && state.password.length !== 0) {
+                const res = await Axios.post(`${process.env.REACT_APP_MSLANCER_BASE_URL}/auth/login`,
+                    { username: state.username, password: state.password });
+                    console.log(res);
+                  alert("welcome to maplestory");
+                }
+                else
+                  setState({ ...state, usernameErr: true, passwordErr: true })
               }}
               classes={{
                 containedPrimary: success,
@@ -83,19 +102,6 @@ console.log(data);
               Login
           </Button>
           </Grid>
-          {/*<Grid md={12} item>
-            <div className={style.divider} style={{ marginBottom: "1.5vh" }} />
-            <Typography variant="body2" align="center">
-              Forgot password?
-            <Link
-                href="/login"
-                onClick={() => {
-                  console.log('test click');
-                }}>
-                Reset Password
-            </Link>
-            </Typography>
-              </Grid>*/}
           <Grid md={12} item>
           </Grid>
         </Grid>

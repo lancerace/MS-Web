@@ -22,7 +22,11 @@ router.post('/login', async (req: express.Request, res: express.Response) => {
   const does_pw_match = await bcrypt.compare(password, await bcryptutil.parse_hashedpw(account.password, true));
 
   delete account.password;
-  return res.json({ password_match: does_pw_match, account_exist: true, account });
+
+  if (does_pw_match)
+    return res.json({ password_match: does_pw_match, account_exist: true, account });
+  else
+    return res.json({ password_match: does_pw_match, account_exist: true })
 })
 
 
