@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Axios from 'axios';
 import style from './styles.module.css';
 import logo from '../../assets/image/Maplestory_logo.png';
@@ -37,7 +38,7 @@ export default function Login() {
     username: "", usernameErr: false,
     password: "", passwordErr: false
   });
-
+  const history = useHistory();
   const { mainContainer, contentContainer, success } = useStyles();
   return (
     <Grid container className={[mainContainer, style.background].join(' ')} justify="center" >
@@ -83,10 +84,16 @@ export default function Login() {
             <Button
               onClick={async (e) => {
                 if (state.username.length !== 0 && state.password.length !== 0) {
-                const res = await Axios.post(`${process.env.REACT_APP_MSLANCER_BASE_URL}/auth/login`,
+                  const { data } = await Axios.post(`${process.env.REACT_APP_MSLANCER_BASE_URL}/auth/login`,
                     { username: state.username, password: state.password });
-                    console.log(res);
-                  alert("welcome to maplestory");
+
+                  if (data.password_match) {
+                    localStorage.setItem("account", JSON.stringify(data.account));
+                    alert("welcome to maplestory");
+                    //history.push("/home");
+                  }
+                  else
+                    alert("invalid password");
                 }
                 else
                   setState({ ...state, usernameErr: true, passwordErr: true })
@@ -106,9 +113,6 @@ export default function Login() {
           </Grid>
         </Grid>
       </Grid>
-
     </Grid>
-
-
   );
 }
