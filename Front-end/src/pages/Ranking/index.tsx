@@ -1,6 +1,6 @@
 import { Container, Grid, makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@material-ui/core";
 import React from "react";
-import TableComponent from "../../../components/Table";
+import TableComponent from "../../components/Table";
 
 
 const Ranking = (props: any) => {
@@ -11,7 +11,7 @@ const Ranking = (props: any) => {
         },
         innerContainer: {
             '& > div:nth-child(1)': {
-                height: "20vh"
+                height: "10vh"
             }
         }
     });

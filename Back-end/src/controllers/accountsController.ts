@@ -15,7 +15,7 @@ router.get('/count', async (req: express.Request, res: express.Response) => {
 
   const result = await getManager().query(`SELECT COUNT(*) AS count FROM accounts`);
   console.log(result);
-    return res.json(result);
+    return res.json(result[0]);
   })
 
 

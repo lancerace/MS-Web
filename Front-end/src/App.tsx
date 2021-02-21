@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import React from 'react';
 import NavBar from './components/NavBar/NavBar';
 import Grid from '@material-ui/core/Grid';
-import Ranking from './pages/Home/Ranking';
+import Ranking from './pages/Ranking';
 import Login from './pages/Login';
 
 function App() {
