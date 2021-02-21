@@ -40,7 +40,7 @@ router.get('/count', async (req: express.Request, res: express.Response) => {
 
   const result = await getManager().query(`SELECT COUNT(*) AS count FROM accounts`);
 
-    return res.json(result);
+    return res.json(result[0]);
 })
 
 export default router;
