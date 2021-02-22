@@ -25,8 +25,8 @@ function App() {
 
           <Switch>
             <Route path="/ranking" component={Ranking} />
-            <Route path="/" component={Home} />
             <Route path="/Login" component={Login}/>
+            <Route path="/" component={Home} />
           </Switch>
       </Grid>
   );

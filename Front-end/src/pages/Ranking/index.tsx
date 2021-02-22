@@ -13,7 +13,7 @@ const [state,setState] = useState({characters:[]});
         },
         innerContainer: {
             '& > div:nth-child(1)': {
-                height: "10vh"
+                height: "2vh"
             }
         }
     });
@@ -50,12 +50,12 @@ const [state,setState] = useState({characters:[]});
 
     const { innerContainer, container } = useStyles();
     return (
-        <Container disableGutters maxWidth={false} className={container}>
+        <Container disableGutters maxWidth={false} className={container} style={{minHeight:"90vh",height:"100%"}}>
             <Grid container justify="center" className={innerContainer}>
                 <Grid item md={12}></Grid>
                 <Grid item style={{ border: "0px solid red" }} md={6}>
 
-                    <TableComponent data={state.characters} headers={['Rank', 'Name', 'Job', 'Level']} />
+                    <TableComponent data={state.characters} headers={['Name', 'Job', 'Level', 'exp']} />
                 </Grid>
             </Grid>
         </Container>

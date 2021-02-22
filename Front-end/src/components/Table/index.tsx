@@ -14,7 +14,14 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-import { TableHead } from '@material-ui/core';
+import { Grid, TableHead } from '@material-ui/core';
+
+import crown from '../../assets/image/rank/crown.png';
+import crown1 from '../../assets/image/rank/crown1.png';
+/*import warrior from '../../assets/image/rank/warrior.png';
+import thief from '../../assets/image/rank/thief.png';
+import magician from '../../assets/image/rank/magician.png';
+import bowman from '../../assets/image/rank/bowman.png';*/
 
 const useStyles1 = makeStyles((theme) => ({
     root: {
@@ -108,10 +115,15 @@ export default function CustomPaginationActionsTable(props) {
     };
 
     return (
+        <React.Fragment>
+            <Grid container justify="center" style={{marginBottom:"2vh"}}>
+            <img src={crown1} alt="crown" style={{width:"200px"}}></img>
+            </Grid>
         <TableContainer component={Paper}>
             <Table stickyHeader className={classes.table} aria-label="custom pagination table">
                 <TableHead>
                     <TableRow>
+                        <TableCell style={{ width: 160 }} align="left">Rank</TableCell>
                         {headers.map((name) => {
                             return (<TableCell style={{ width: 160 }} key={`header-${name}`} align="left">{name}</TableCell>);
                         })}
@@ -124,10 +136,31 @@ export default function CustomPaginationActionsTable(props) {
                             : data
                         ).map((row, index) => (
                             <TableRow key={`${row.name}-${index}`}>
+                                <TableCell style={{ width: 160 }} align="left">
+                                    {index + 1}
+                                </TableCell>
                                 {Object.keys(row).map((key, index) => {
-                                    return (<TableCell key={`tableCell-${index}`} style={{ width: 160 }} align="left">
-                                        {row[key]}
-                                    </TableCell>)
+                                    
+                                    if (key=== 'job') {
+                                        var job = "";
+                                        switch (row[key]) {
+                                            case '000': job = "beginner";
+                                                break;
+                                            case '100': job = "warrior";
+                                                break;
+                                            case '200': job = "magician";
+                                                break;
+                                            case '300': job = "bowman";
+                                                break;
+                                            default: job = "beginner"
+                                        }//end switch
+                                        return (<TableCell key={`tableCell-${index}`} style={{ width: 160 }} align="left">
+                                            <img src={`assets/image/rank/${job}.png`} alt={job}></img>
+                                        </TableCell>)
+                                    } else
+                                        return (<TableCell key={`tableCell-${index}`} style={{ width: 160 }} align="left">
+                                            {row[key]}
+                                        </TableCell>)
                                 })}
                             </TableRow>))}
                     {emptyRows > 0 && (
@@ -156,5 +189,6 @@ export default function CustomPaginationActionsTable(props) {
                 </TableFooter>
             </Table>
         </TableContainer>
+        </React.Fragment>
     );
 }
