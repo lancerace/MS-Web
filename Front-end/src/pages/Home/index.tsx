@@ -22,12 +22,19 @@ const AnnouncementItems = (props: any) => {
             width: "392px",
             borderRadius: "3px",
             height: "27px",
-            background: "linear-gradient(to bottom, #035b79 0%,#1b8fb7 100%)"
+            background: "linear-gradient(to bottom, #035b79 0%,#1b8fb7 100%)",
+            '& > span':{
+                color: "white",
+                padding: "20px 7px 10px 6px",
+                fontSize:"12px",
+                fontFamily:"arial",
+                fontWeight:"bold"
+            }
         }
     }));
 
     const { item } = useStyles();
-    return (<div className={item}>{props.children}</div>);
+    return (<div className={item} style={{width:"80"}}>{props.children}</div>);
 }
 
 const Home = (props: any) => {
@@ -62,7 +69,6 @@ const Home = (props: any) => {
 
         const fetchData = async () => {
             const online = await Axios.get(`${process.env.REACT_APP_MSLANCER_BASE_URL}/accounts/online`);
-            console.log(online);
             const characters = await Axios.get(`${process.env.REACT_APP_MSLANCER_BASE_URL}/characters/count`);
             const accounts = await Axios.get(`${process.env.REACT_APP_MSLANCER_BASE_URL}/accounts/count`);
             setState({ ...state, characters: characters.data.count, accounts: accounts.data.count, online: online.data.account_online })
@@ -112,7 +118,9 @@ const Home = (props: any) => {
                                 </Grid>
                                 <hr></hr>
                                 <Grid container justify="center" item md={12} style={{ border: "0px solid red" }}>
-                                <AnnouncementItems><span>Alpha is out. enjoy the game!</span></AnnouncementItems>
+                                <AnnouncementItems>
+                                    <span>Alpha Release - Phrase 1</span>
+                                    </AnnouncementItems>
                                 </Grid>
                             </Grid>
                         </Grid>
