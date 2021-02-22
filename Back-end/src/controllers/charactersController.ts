@@ -6,7 +6,7 @@ const router: express.Router = express.Router();
 
 router.get('/', async(req: express.Request, res: express.Response) => {
   console.log("root");
-  const result = await getManager().query(`SELECT c.level , c.exp, c.name, c.accountid, a.banned AS banned  
+  const result = await getManager().query(`SELECT c.name, c.job, c.level , c.exp,   
    FROM characters c LEFT JOIN accounts a ON c.accountid = a.id 
    WHERE c.gm < 4 AND banned = 0 GROUP BY c.id ORDER BY c.level DESC, c.exp DESC limit 100`);
 

@@ -125,7 +125,7 @@ export default function CustomPaginationActionsTable(props) {
                         ).map((row, index) => (
                             <TableRow key={`${row.name}-${index}`}>
                                 {Object.keys(row).map((key, index) => {
-                                    return (<TableCell style={{ width: 160 }} align="left">
+                                    return (<TableCell key={`tableCell-${index}`} style={{ width: 160 }} align="left">
                                         {row[key]}
                                     </TableCell>)
                                 })}

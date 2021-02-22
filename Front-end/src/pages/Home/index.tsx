@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Button, makeStyles, Divider, Typography } from '@material-ui/core';
+import { Grid, Button, makeStyles, Divider, Typography, CircularProgress } from '@material-ui/core';
 import { Route, Switch } from 'react-router-dom';
 import Clock from 'react-live-clock';
 import box_bg from '../../assets/image/cc_bg.jpg';
@@ -7,10 +7,26 @@ import announcements from '../../assets/image/announcements.png';
 import style from './styles.module.css';
 import Features from '../Feature';
 import Axios from "axios";
+import { Announcement } from '@material-ui/icons';
 interface IState {
     status: string;
     characters: string;
     accounts: string
+}
+
+const AnnouncementItems = (props: any) => {
+
+    const useStyles = makeStyles(theme => ({
+        item: {
+            width: "392px",
+            borderRadius: "3px",
+            height: "27px",
+            background: "linear-gradient(to bottom, #035b79 0%,#1b8fb7 100%)"
+        }
+    }));
+
+    const { item } = useStyles();
+    return (<div className={item}>{props.children}</div>);
 }
 
 const Home = (props: any) => {
@@ -46,18 +62,14 @@ const Home = (props: any) => {
         const fetchData = async () => {
             const characters = await Axios.get(`${process.env.REACT_APP_MSLANCER_BASE_URL}/characters/count`);
             const accounts = await Axios.get(`${process.env.REACT_APP_MSLANCER_BASE_URL}/accounts/count`);
-
-            setState({...state,characters:characters.data.count,accounts:accounts.data.count})
+            setState({ ...state, characters: characters.data.count, accounts: accounts.data.count })
         }
-
         fetchData();
-
-
     }, [])
 
     return (
         <React.Fragment>
-            <Grid container style={{ minHeight: "90vh" }}>
+            <Grid container style={{ minHeight: "90vh", maxHeight: "90vh" }}>
                 <Grid container item md={12} style={{ height: "10vh", border: "0px solid gray" }}>
                 </Grid>
                 <Grid container item style={{ border: "0px solid red", width: "100%" }} justify="center">
@@ -93,13 +105,12 @@ const Home = (props: any) => {
 
                         <Grid container item md={5}>{/**middle column*/}
                             <Grid item md={12}>
-
                                 <Grid item md={12} container justify="center" style={{ marginBottom: "2vh" }}><img src={announcements} alt="latest announcement"></img>
                                 </Grid>
                                 <hr></hr>
-                                <Grid item md={12} style={{ border: "0px solid red" }}>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum sed justo id ullamcorper. Nullam vitae orci ante. Maecenas a tortor laoreet, dapibus leo et, dictum risus. Integer et convallis est. Aliquam sem urna, consectetur nec venenatis in, pulvinar eu ipsum. Nunc ac pulvinar lacus. Sed nec cursus turpis. Suspendisse et ante vel augue condimentum auctor. Cras id auctor dolor, vitae rutrum dolor.
-                            </Grid>
+                                <Grid container justify="center" item md={12} style={{ border: "0px solid red" }}>
+                                <AnnouncementItems><span>Alpha is out. enjoy the game!</span></AnnouncementItems>
+                                </Grid>
                             </Grid>
                         </Grid>
 
@@ -109,27 +120,54 @@ const Home = (props: any) => {
                                 <hr></hr>
                                 <Grid item md={12} container alignItems="center">
                                     <Grid item md={6}><Typography variant="h6">Status</Typography></Grid>
-                                    <Grid item md={6}><Typography color="textSecondary" variant="h6">Online</Typography></Grid>
+                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">Online</Typography></Grid>
                                 </Grid>
 
                                 <Grid item md={12} container alignItems="center">
                                     <Grid item md={6}><Typography variant="h6">Characters</Typography></Grid>
-                                    <Grid item md={6}><Typography color="textSecondary" variant="h6">{state.characters === "" ? 0 : state.characters}</Typography></Grid>
+                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">{state.characters === "" ? <CircularProgress size={15} /> : state.characters}</Typography></Grid>
                                 </Grid>
 
                                 <Grid item md={12} container alignItems="center">
                                     <Grid item md={6}><Typography variant="h6">Accounts</Typography></Grid>
-                                    <Grid item md={6}><Typography color="textSecondary" variant="h6">{state.accounts === "" ? 0 : state.accounts}</Typography></Grid>
+                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">{state.accounts === "" ? <CircularProgress size={15} /> : state.accounts}</Typography></Grid>
                                 </Grid>
+                                <hr></hr>
+
+                                <Grid item md={12} container alignItems="center">
+                                    <Grid item md={6}><Typography variant="h6">Version</Typography></Grid>
+                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">v83</Typography></Grid>
+                                </Grid>
+
+
+                                <Grid item md={12} container alignItems="center">
+                                    <Grid item md={6}><Typography variant="h6">Exp</Typography></Grid>
+                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">x2</Typography></Grid>
+                                </Grid>
+
+
+                                <Grid item md={12} container alignItems="center">
+                                    <Grid item md={6}><Typography variant="h6">Mesos</Typography></Grid>
+                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">x1</Typography></Grid>
+                                </Grid>
+
+
+                                <Grid item md={12} container alignItems="center">
+                                    <Grid item md={6}><Typography variant="h6">Drop</Typography></Grid>
+                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">x2.5</Typography></Grid>
+                                </Grid>
+
                             </Grid>
 
                             <Grid item md={12}>
                                 <Grid item md={12}><h3>Discord</h3> <hr></hr>
                                 </Grid>
                                 <Grid item md={12} style={{ border: "0px solid red" }}>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum sed justo id ullamcorper. Nullam vitae orci ante. Maecenas a tortor laoreet, dapibus leo et, dictum risus. Integer et convallis est. Aliquam sem urna, consectetur nec venenatis in, pulvinar eu ipsum. Nunc ac pulvinar lacus. Sed nec cursus turpis. Suspendisse et ante vel augue condimentum auctor. Cras id auctor dolor, vitae rutrum dolor.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum sed justo id ullamcorper. Nullam vitae orci ante.
                             </Grid>
                             </Grid>
+
+
                         </Grid>
                     </Grid>
                 </Grid>
