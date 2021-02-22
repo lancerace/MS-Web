@@ -12,6 +12,7 @@ interface IState {
     status: string;
     characters: string;
     accounts: string
+    online:string;
 }
 
 const AnnouncementItems = (props: any) => {
@@ -31,7 +32,7 @@ const AnnouncementItems = (props: any) => {
 
 const Home = (props: any) => {
 
-    const [state, setState] = useState<IState>({ status: "", characters: "", accounts: "" });
+    const [state, setState] = useState<IState>({ status: "", characters: "", accounts: "",online:""});
 
     const useStyles = makeStyles({
         innerContainer: {
@@ -60,9 +61,11 @@ const Home = (props: any) => {
     useEffect(() => {
 
         const fetchData = async () => {
+            const online = await Axios.get(`${process.env.REACT_APP_MSLANCER_BASE_URL}/accounts/online`);
+            console.log(online);
             const characters = await Axios.get(`${process.env.REACT_APP_MSLANCER_BASE_URL}/characters/count`);
             const accounts = await Axios.get(`${process.env.REACT_APP_MSLANCER_BASE_URL}/accounts/count`);
-            setState({ ...state, characters: characters.data.count, accounts: accounts.data.count })
+            setState({ ...state, characters: characters.data.count, accounts: accounts.data.count, online: online.data.account_online })
         }
         fetchData();
     }, [])
@@ -72,10 +75,10 @@ const Home = (props: any) => {
             <Grid container style={{ minHeight: "90vh", maxHeight: "90vh" }}>
                 <Grid container item md={12} style={{ height: "10vh", border: "0px solid gray" }}>
                 </Grid>
-                <Grid container item style={{ border: "0px solid red", width: "100%" }} justify="center">
+                <Grid container item md={12} style={{ border: "0px solid red", width: "100%" }} justify="center">
                     <Grid container style={{ border: "0px solid red" }} className={innerContainer} item md={10}> {/**inner container */}
 
-                        <Grid container md={3} style={{ border: "0px solid yellow" }}> {/**left column */}
+                        <Grid container item md={3} style={{ border: "0px solid yellow" }}> {/**left column */}
 
                             <Grid container item md={12} justify="center">
                                 <Grid item md={12} >
@@ -119,41 +122,46 @@ const Home = (props: any) => {
                                 <Grid item md={12}><h3>Server</h3></Grid>
                                 <hr></hr>
                                 <Grid item md={12} container alignItems="center">
-                                    <Grid item md={6}><Typography variant="h6">Status</Typography></Grid>
+                                    <Grid item md={6}><Typography variant="subtitle1">Status</Typography></Grid>
                                     <Grid item md={6}><Typography color="primary" variant="subtitle1">Online</Typography></Grid>
                                 </Grid>
 
                                 <Grid item md={12} container alignItems="center">
-                                    <Grid item md={6}><Typography variant="h6">Characters</Typography></Grid>
+                                    <Grid item md={6}><Typography variant="subtitle1">Players Online</Typography></Grid>
+                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">{state.online === "" ? <CircularProgress size={15} /> : state.online}</Typography></Grid>
+                                </Grid>
+
+                                <Grid item md={12} container alignItems="center">
+                                    <Grid item md={6}><Typography variant="subtitle1">Characters</Typography></Grid>
                                     <Grid item md={6}><Typography color="primary" variant="subtitle1">{state.characters === "" ? <CircularProgress size={15} /> : state.characters}</Typography></Grid>
                                 </Grid>
 
                                 <Grid item md={12} container alignItems="center">
-                                    <Grid item md={6}><Typography variant="h6">Accounts</Typography></Grid>
+                                    <Grid item md={6}><Typography variant="subtitle1">Accounts</Typography></Grid>
                                     <Grid item md={6}><Typography color="primary" variant="subtitle1">{state.accounts === "" ? <CircularProgress size={15} /> : state.accounts}</Typography></Grid>
                                 </Grid>
                                 <hr></hr>
 
                                 <Grid item md={12} container alignItems="center">
-                                    <Grid item md={6}><Typography variant="h6">Version</Typography></Grid>
+                                    <Grid item md={6}><Typography variant="subtitle1">Version</Typography></Grid>
                                     <Grid item md={6}><Typography color="primary" variant="subtitle1">v83</Typography></Grid>
                                 </Grid>
 
 
                                 <Grid item md={12} container alignItems="center">
-                                    <Grid item md={6}><Typography variant="h6">Exp</Typography></Grid>
+                                    <Grid item md={6}><Typography variant="subtitle1">Exp</Typography></Grid>
                                     <Grid item md={6}><Typography color="primary" variant="subtitle1">x2</Typography></Grid>
                                 </Grid>
 
 
                                 <Grid item md={12} container alignItems="center">
-                                    <Grid item md={6}><Typography variant="h6">Mesos</Typography></Grid>
+                                    <Grid item md={6}><Typography variant="subtitle1">Mesos</Typography></Grid>
                                     <Grid item md={6}><Typography color="primary" variant="subtitle1">x1</Typography></Grid>
                                 </Grid>
 
 
                                 <Grid item md={12} container alignItems="center">
-                                    <Grid item md={6}><Typography variant="h6">Drop</Typography></Grid>
+                                    <Grid item md={6}><Typography variant="subtitle1">Drop</Typography></Grid>
                                     <Grid item md={6}><Typography color="primary" variant="subtitle1">x2.5</Typography></Grid>
                                 </Grid>
 

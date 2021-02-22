@@ -8,7 +8,7 @@ router.get('/online', async (req: express.Request, res: express.Response) => {
 
 const result = await getManager().query(`SELECT COUNT(*) as account_online FROM accounts where loggedin = 2`);
 
-  return res.json(result);
+  return res.json(result[0]);
 })
 
 router.get('/count', async (req: express.Request, res: express.Response) => {
