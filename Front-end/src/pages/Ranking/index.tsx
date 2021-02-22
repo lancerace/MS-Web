@@ -19,6 +19,7 @@ const [state,setState] = useState({characters:[]});
     });
 
     useEffect(() => {
+        console.log("test");
         const fetchData = async () => {
             const { data } = await Axios.get(`${process.env.REACT_APP_MSLANCER_BASE_URL}/characters`);
             console.log(data);
@@ -54,7 +55,7 @@ const [state,setState] = useState({characters:[]});
                 <Grid item md={12}></Grid>
                 <Grid item style={{ border: "0px solid red" }} md={6}>
 
-                    <TableComponent data={state.characters} headers={['Rank', 'Image', 'Name', 'Job', 'Level']} />
+                    <TableComponent data={state.characters} headers={['Rank', 'Name', 'Job', 'Level']} />
                 </Grid>
             </Grid>
         </Container>
