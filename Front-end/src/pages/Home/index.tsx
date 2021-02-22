@@ -91,13 +91,13 @@ const Home = (props: any) => {
                                     <Typography align="center" variant="h6">Download Client</Typography>
                                 </Grid>
                                 <Grid item>
-                                    <Button size="large" variant="contained" color="primary"> Downloads
+                                    <Button size="large" disabled variant="contained" color="primary"> Downloads
                                     </Button>
                                 </Grid>
                             </Grid>
 
                             <Grid item md={12}>
-                                <Grid item> Server Time</Grid>
+                                <Grid item> <Typography variant="h6" color="textSecondary">Server Time</Typography></Grid>
                                 <Grid item>
                                     <h4>
                                         <Clock
@@ -107,7 +107,12 @@ const Home = (props: any) => {
                                     </h4>
                                 </Grid>
                             </Grid>
-                            <Grid item md={12} style={{ height: "30vh", visibility: "hidden" }}></Grid>
+                            <Grid item md={12} style={{ height: "37vh" }}>
+                            <Grid item md={12}><h3>Discord</h3> <hr></hr></Grid>
+                                <Grid item md={12} style={{ position:"relative", overflow:"hidden"}}>
+                                <iframe title="discord" style={{height:"100%"}} src="https://discord.com/widget?id=813482864061841439&theme=dark" width="350" height="500" allowTransparency={true} frameBorder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                                </Grid>
+                            </Grid>
 
 
                         </Grid>
@@ -131,7 +136,7 @@ const Home = (props: any) => {
                                 <hr></hr>
                                 <Grid item md={12} container alignItems="center">
                                     <Grid item md={6}><Typography variant="subtitle1">Status</Typography></Grid>
-                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">Online</Typography></Grid>
+                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">Offline</Typography></Grid>
                                 </Grid>
 
                                 <Grid item md={12} container alignItems="center">
@@ -175,12 +180,7 @@ const Home = (props: any) => {
 
                             </Grid>
 
-                            <Grid item md={12}>
-                                <Grid item md={12}><h3>Discord</h3> <hr></hr>
-                                </Grid>
-                                <Grid item md={12} style={{ border: "0px solid red" }}>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum sed justo id ullamcorper. Nullam vitae orci ante.
-                            </Grid>
+                            <Grid item md={12} style={{visibility:"hidden"}}>
                             </Grid>
 
 

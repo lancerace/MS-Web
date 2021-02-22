@@ -1,6 +1,6 @@
 import Home from './pages/Home'
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import React from 'react';
 import NavBar from './components/NavBar/NavBar';
 import Grid from '@material-ui/core/Grid';
@@ -13,7 +13,7 @@ function App() {
         <Grid container>
         <NavBar hoverColor="blue">
             <NavBar.Item to="/">Home</NavBar.Item>
-            <NavBar.Item to="/">Download</NavBar.Item>
+            <NavBar.Item to="/">Information</NavBar.Item>
             <NavBar.Item to="/ranking">Ranking</NavBar.Item>
             <NavBar.Item to="/">Vote</NavBar.Item>
             
