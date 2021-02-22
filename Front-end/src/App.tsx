@@ -28,6 +28,12 @@ function App() {
             <Route path="/Login" component={Login}/>
             <Route path="/" component={Home} />
           </Switch>
+
+          {/**footer */}
+          <Grid container style={{background:"black", zIndex:99,color:"white"}}>
+            <Grid item md={1}></Grid>
+            <Grid item md>All images or property related to nexon are rightfully belongs to nexon. © </Grid>
+            </Grid>
       </Grid>
   );
 }
