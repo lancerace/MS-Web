@@ -91,7 +91,9 @@ const Home = (props: any) => {
                                     <Typography align="center" variant="h6">Download Client</Typography>
                                 </Grid>
                                 <Grid item>
-                                    <Button size="large" disabled variant="contained" color="primary"> Downloads
+                                    <Button size="large" variant="contained" color="primary" onClick={()=>{
+                                        window.open("https://drive.google.com/drive/folders/119JOFdmR7LeWl0sdCQ1wDiYzVDtyg6ro?usp=sharing" ,"_blank");
+                                    }}> Downloads
                                     </Button>
                                 </Grid>
                             </Grid>
@@ -123,9 +125,11 @@ const Home = (props: any) => {
                                 </Grid>
                                 <hr></hr>
                                 <Grid container justify="center" item md={12} style={{ border: "0px solid red" }}>
+
                                 <AnnouncementItems>
-                                    <span>Alpha Release - Phrase 1</span>
+                                    <span>Alpha Release - Welcome to the server!</span>
                                     </AnnouncementItems>
+                                    <hr></hr>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -136,7 +140,7 @@ const Home = (props: any) => {
                                 <hr></hr>
                                 <Grid item md={12} container alignItems="center">
                                     <Grid item md={6}><Typography variant="subtitle1">Status</Typography></Grid>
-                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">Offline</Typography></Grid>
+                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">Online</Typography></Grid>
                                 </Grid>
 
                                 <Grid item md={12} container alignItems="center">
@@ -163,7 +167,7 @@ const Home = (props: any) => {
 
                                 <Grid item md={12} container alignItems="center">
                                     <Grid item md={6}><Typography variant="subtitle1">Exp</Typography></Grid>
-                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">x2</Typography></Grid>
+                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">x4</Typography></Grid>
                                 </Grid>
 
 
@@ -175,7 +179,7 @@ const Home = (props: any) => {
 
                                 <Grid item md={12} container alignItems="center">
                                     <Grid item md={6}><Typography variant="subtitle1">Drop</Typography></Grid>
-                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">x2.5</Typography></Grid>
+                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">x3</Typography></Grid>
                                 </Grid>
 
                             </Grid>
