@@ -74,7 +74,6 @@ export default function Login() {
               error={state.passwordErr}
               helperText={state.passwordErr ? 'Please fill in password or max characters is 14!' : ''}
               value={state.password} onChange={(e) => {
-                console.log(e.target.value.length);
                 if (e.target.value === "" || e.target.value.length > 14)
                   setState({ ...state, passwordErr: true, password: e.target.value })
                 else
@@ -89,8 +88,8 @@ export default function Login() {
                     { username: state.username, password: state.password });
 
                   if (data.password_match) {
-                    localStorage.setItem("account", JSON.stringify(data.account));
-                    alert("welcome to maplestory");
+                    sessionStorage.setItem("account", JSON.stringify(data.account));
+                    alert("Successfully logged in. Welcome back!");
                     history.push("/home");
                   }
                   else

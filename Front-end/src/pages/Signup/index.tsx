@@ -135,7 +135,7 @@ export default function Login() {
                     alert("Account already exist!");
                   else
                     if (data.affectedRows > 0) {
-                      alert("welcome to maplestory");
+                      alert("Registered. Welcome to SeaMS!");
                       history.push("/home");
                     }
                     else

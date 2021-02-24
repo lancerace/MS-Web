@@ -118,6 +118,9 @@ const Home = (props: any) => {
                         </Grid>
 
                         <Grid container item md={5}>{/**middle column*/}
+
+                            {sessionStorage.getItem('account') !==null ? (<Grid>abc</Grid>) : "" }
+
                             <Grid item md={12}>
                                 <Grid item md={12} container justify="center" style={{ marginBottom: "2vh" }}><img src={announcements} alt="latest announcement"></img>
                                 </Grid>

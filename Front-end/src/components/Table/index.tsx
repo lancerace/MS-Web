@@ -150,6 +150,8 @@ export default function CustomPaginationActionsTable(props) {
                                                 break;
                                             case "200": job = "magician";
                                                 break;
+                                            case "230": job = "magician";
+                                                break;
                                             case "300": job = "bowman";
                                                 break;
                                             default: job = "beginner"
