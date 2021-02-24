@@ -72,9 +72,10 @@ export default function Login() {
           <Grid item md={12}>
             <TextField fullWidth label="Password" variant="outlined"
               error={state.passwordErr}
-              helperText={state.passwordErr ? 'Please fill in password!' : ''}
+              helperText={state.passwordErr ? 'Please fill in password or max characters is 14!' : ''}
               value={state.password} onChange={(e) => {
-                if (e.target.value === "")
+                console.log(e.target.value.length);
+                if (e.target.value === "" || e.target.value.length > 14)
                   setState({ ...state, passwordErr: true, password: e.target.value })
                 else
                   setState({ ...state, password: e.target.value, passwordErr: false })
@@ -83,7 +84,7 @@ export default function Login() {
           <Grid item md={12}>
             <Button
               onClick={async (e) => {
-                if (state.username.length !== 0 && state.password.length !== 0) {
+                if (state.username.length !== 0 && state.password.length !== 0 && state.password.length <= 14) {
                   const { data } = await Axios.post(`${process.env.REACT_APP_MSLANCER_BASE_URL}/auth/login`,
                     { username: state.username, password: state.password });
 
@@ -95,8 +96,14 @@ export default function Login() {
                   else
                     alert("invalid password");
                 }
-                else
-                  setState({ ...state, usernameErr: true, passwordErr: true })
+                else {
+                  if (state.username.length === 0)
+                    setState({ ...state, usernameErr: true, passwordErr: false })
+                  else if (state.password.length === 0 || state.password.length > 14)
+                    setState({ ...state, usernameErr: false, passwordErr: true })
+                  else
+                    setState({ ...state, usernameErr: false, passwordErr: true })
+                }
               }}
               classes={{
                 containedPrimary: success,

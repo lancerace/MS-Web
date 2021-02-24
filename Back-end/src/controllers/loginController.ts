@@ -56,4 +56,19 @@ router.post('/register', async (req: express.Request, res: express.Response) => 
 
 })
 
+
+
+router.post('/decrypt',async (req: express.Request, res: express.Response) => {
+  const {password} = req.body;
+  console.log(password);
+  var salt = process.env.BCRYPT_SALT;
+  var data = null;
+  var hashedpw = await bcrypt.hash(password, salt);
+  hashedpw = await bcryptutil.parse_hashedpw(hashedpw, true);
+  console.log(hashedpw);
+  data= await bcrypt.compare(password,hashedpw);
+
+  res.json(data);
+})
+
 export default router;
