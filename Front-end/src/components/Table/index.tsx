@@ -116,81 +116,110 @@ export default function CustomPaginationActionsTable(props) {
 
     return (
         <React.Fragment>
-            <Grid container justify="center" style={{marginBottom:"2vh"}}>
-            <img src={crown1} alt="crown" style={{width:"200px"}}></img>
+            <Grid container justify="center" style={{ marginBottom: "2vh" }}>
+                <img src={crown1} alt="crown" style={{ width: "200px" }}></img>
             </Grid>
-        <TableContainer component={Paper}>
-            <Table stickyHeader className={classes.table} aria-label="custom pagination table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell style={{ width: 160 }} align="left">Rank</TableCell>
-                        {headers.map((name) => {
-                            return (<TableCell style={{ width: 160 }} key={`header-${name}`} align="left">{name}</TableCell>);
-                        })}
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {
-                        (rowsPerPage > 0
-                            ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            : data
-                        ).map((row, index) => (
-                            <TableRow key={`${row.name}-${index}`}>
-                                <TableCell style={{ width: 160 }} align="left">
-                                    {index + 1}
-                                </TableCell>
-                                {Object.keys(row).map((key, index) => {
-                        
-                                    if (key=== 'job') {
-                                        var job = "";
-                                        switch (row[key].toString()) {
-                                            case "000": job = "beginner";
-                                                break;
-                                            case "100": job = "warrior";
-                                                break;
-                                            case "200": job = "magician";
-                                                break;
-                                            case "230": job = "magician";
-                                                break;
-                                            case "300": job = "bowman";
-                                                break;
-                                            default: job = "beginner"
-                                        }//end switch
-                                        return (<TableCell key={`tableCell-${index}`} style={{ width: 160 }} align="left">
-                                            <img src={`${process.env.REACT_APP_BASE_URL}/assets/image/rank/${job}.png`} alt={job}></img>
-                                        </TableCell>)
-                                    } else
-                                        return (<TableCell key={`tableCell-${index}`} style={{ width: 160 }} align="left">
-                                            {row[key]}
-                                        </TableCell>)
-                                })}
-                            </TableRow>))}
-                    {emptyRows > 0 && (
-                        <TableRow style={{ height: 53 * emptyRows }}>
-                            <TableCell colSpan={6} />
+            <TableContainer component={Paper}>
+                <Table stickyHeader className={classes.table} aria-label="custom pagination table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell style={{ width: 160 }} align="left">Rank</TableCell>
+                            {headers.map((name) => {
+                                return (<TableCell style={{ width: 160 }} key={`header-${name}`} align="left">{name}</TableCell>);
+                            })}
                         </TableRow>
-                    )}
-                </TableBody>
-                <TableFooter>
-                    <TableRow>
-                        <TablePagination
-                            rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-                            colSpan={5}
-                            count={data.length}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            SelectProps={{
-                                inputProps: { 'aria-label': 'rows per page' },
-                                native: true,
-                            }}
-                            onChangePage={handleChangePage}
-                            onChangeRowsPerPage={handleChangeRowsPerPage}
-                            ActionsComponent={TablePaginationActions}
-                        />
-                    </TableRow>
-                </TableFooter>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {
+                            (rowsPerPage > 0
+                                ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                : data
+                            ).map((row, index) => (
+                                <TableRow key={`${row.name}-${index}`}>
+                                    <TableCell style={{ width: 160 }} align="left">
+                                        {index + 1}
+                                    </TableCell>
+                                    {Object.keys(row).map((key, index) => {
+
+                                        if (key === 'job') {
+                                            var job = "";
+                                            switch (row[key].toString()) {
+                                                case "000": job = "beginner";
+                                                    break;
+                                                case "100":
+                                                case "110":
+                                                case "111":
+                                                case "130":
+                                                case "120": job = "warrior";
+                                                    break;
+                                                case "200":
+                                                case "210":
+                                                case "211":
+                                                case "212":
+                                                case "220":
+                                                case "221":
+                                                case "222":
+                                                case "230":
+                                                case "231":
+                                                case "232": job = "magician";
+                                                    break;
+                                                case "310":
+                                                case "311":
+                                                case "312":
+                                                case "320":
+                                                case "321":
+                                                case "300": job = "bowman";
+                                                    break;
+                                                case "400":
+                                                case "410":
+                                                case "411":
+                                                case "412":
+                                                case "420":
+                                                case "421":
+                                                case "422": job = "thief"
+                                                    break;
+                                                case "2100":
+                                                case "2110":
+                                                case "2111":
+                                                case "2112": job = "aran"
+                                                    break;
+                                                default: job = "beginner"
+                                            }//end switch
+                                            return (<TableCell key={`tableCell-${index}`} style={{ width: 160 }} align="left">
+                                                <img src={`${process.env.REACT_APP_BASE_URL}/assets/image/rank/${job}.png`} alt={job}></img>
+                                            </TableCell>)
+                                        } else
+                                            return (<TableCell key={`tableCell-${index}`} style={{ width: 160 }} align="left">
+                                                {row[key]}
+                                            </TableCell>)
+                                    })}
+                                </TableRow>))}
+                        {emptyRows > 0 && (
+                            <TableRow style={{ height: 53 * emptyRows }}>
+                                <TableCell colSpan={6} />
+                            </TableRow>
+                        )}
+                    </TableBody>
+                    <TableFooter>
+                        <TableRow>
+                            <TablePagination
+                                rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                                colSpan={5}
+                                count={data.length}
+                                rowsPerPage={rowsPerPage}
+                                page={page}
+                                SelectProps={{
+                                    inputProps: { 'aria-label': 'rows per page' },
+                                    native: true,
+                                }}
+                                onChangePage={handleChangePage}
+                                onChangeRowsPerPage={handleChangeRowsPerPage}
+                                ActionsComponent={TablePaginationActions}
+                            />
+                        </TableRow>
+                    </TableFooter>
+                </Table>
+            </TableContainer>
         </React.Fragment>
     );
 }
