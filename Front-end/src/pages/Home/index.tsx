@@ -12,7 +12,7 @@ interface IState {
     status: string;
     characters: string;
     accounts: string
-    online:string;
+    online: string;
 }
 
 const AnnouncementItems = (props: any) => {
@@ -23,23 +23,23 @@ const AnnouncementItems = (props: any) => {
             borderRadius: "3px",
             height: "27px",
             background: "linear-gradient(to bottom, #035b79 0%,#1b8fb7 100%)",
-            '& > span':{
+            '& > span': {
                 color: "white",
                 padding: "20px 7px 10px 6px",
-                fontSize:"12px",
-                fontFamily:"arial",
-                fontWeight:"bold"
+                fontSize: "12px",
+                fontFamily: "arial",
+                fontWeight: "bold"
             }
         }
     }));
 
     const { item } = useStyles();
-    return (<div className={item} style={{width:"80"}}>{props.children}</div>);
+    return (<div className={item} style={{ width: "80" }}>{props.children}</div>);
 }
 
 const Home = (props: any) => {
 
-    const [state, setState] = useState<IState>({ status: "", characters: "", accounts: "",online:""});
+    const [state, setState] = useState<IState>({ status: "", characters: "", accounts: "", online: "" });
 
     const useStyles = makeStyles({
         innerContainer: {
@@ -91,8 +91,8 @@ const Home = (props: any) => {
                                     <Typography align="center" variant="h6">Download Client</Typography>
                                 </Grid>
                                 <Grid item>
-                                    <Button size="large" variant="contained" color="primary" onClick={()=>{
-                                        window.open("https://drive.google.com/drive/folders/119JOFdmR7LeWl0sdCQ1wDiYzVDtyg6ro?usp=sharing" ,"_blank");
+                                    <Button size="large" variant="contained" color="primary" onClick={() => {
+                                        window.open("https://drive.google.com/drive/folders/119JOFdmR7LeWl0sdCQ1wDiYzVDtyg6ro?usp=sharing", "_blank");
                                     }}> Downloads
                                     </Button>
                                 </Grid>
@@ -109,14 +109,12 @@ const Home = (props: any) => {
                                     </h4>
                                 </Grid>
                             </Grid>
-                            <Grid item md={12} style={{ height: "37vh" }}>
-                            <Grid item md={12}><h3>Discord</h3> <hr></hr></Grid>
-                                <Grid item md={12} style={{ position:"relative", overflow:"hidden"}}>
-                                <iframe title="discord" style={{height:"100%"}} src="https://discord.com/widget?id=813482864061841439&theme=dark" width="350" height="500" allowTransparency={true} frameBorder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-                                </Grid>
+                            <Grid item md={12}>
+                                <Grid item md={12}><h3>Discord</h3> <hr></hr></Grid>
+                                <Grid container justify="center"><Button size="large" variant="contained" color="primary" onClick={() => {
+                                    window.open("https://discord.gg/AbzxaHVc", "__blank");
+                                }}>Discord Link</Button></Grid>
                             </Grid>
-
-
                         </Grid>
 
                         <Grid container item md={5}>{/**middle column*/}
@@ -126,8 +124,8 @@ const Home = (props: any) => {
                                 <hr></hr>
                                 <Grid container justify="center" item md={12} style={{ border: "0px solid red" }}>
 
-                                <AnnouncementItems>
-                                    <span>Alpha Release - Welcome to the server!</span>
+                                    <AnnouncementItems>
+                                        <span>Alpha Release - Welcome to the server!</span>
                                     </AnnouncementItems>
                                     <hr></hr>
                                 </Grid>
@@ -184,7 +182,7 @@ const Home = (props: any) => {
 
                             </Grid>
 
-                            <Grid item md={12} style={{visibility:"hidden"}}>
+                            <Grid item md={12} style={{ visibility: "hidden" }}>
                             </Grid>
 
 
