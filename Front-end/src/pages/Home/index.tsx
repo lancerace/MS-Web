@@ -127,7 +127,7 @@ const Home = (props: any) => {
                                     <AnnouncementItems>
                                         <span>Alpha Release - Welcome to the server!</span>
                                     </AnnouncementItems>
-                                    <hr></hr>
+                     
                                 </Grid>
                             </Grid>
                         </Grid>
