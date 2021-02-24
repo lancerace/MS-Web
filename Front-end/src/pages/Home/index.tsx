@@ -7,7 +7,7 @@ import announcements from '../../assets/image/announcements.png';
 import style from './styles.module.css';
 import Features from '../Feature';
 import Axios from "axios";
-import { Announcement } from '@material-ui/icons';
+
 interface IState {
     status: string;
     characters: string;
@@ -119,8 +119,6 @@ const Home = (props: any) => {
 
                         <Grid container item md={5}>{/**middle column*/}
 
-                            {sessionStorage.getItem('account') !==null ? (<Grid>abc</Grid>) : "" }
-
                             <Grid item md={12}>
                                 <Grid item md={12} container justify="center" style={{ marginBottom: "2vh" }}><img src={announcements} alt="latest announcement"></img>
                                 </Grid>
@@ -130,7 +128,7 @@ const Home = (props: any) => {
                                     <AnnouncementItems>
                                         <span>Alpha Release - Welcome to the server!</span>
                                     </AnnouncementItems>
-                     
+
                                 </Grid>
                             </Grid>
                         </Grid>

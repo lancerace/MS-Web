@@ -16,7 +16,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import { Grid, TableHead } from '@material-ui/core';
 
-import crown from '../../assets/image/rank/crown.png';
+
 import crown1 from '../../assets/image/rank/crown1.png';
 /*import warrior from '../../assets/image/rank/warrior.png';
 import thief from '../../assets/image/rank/thief.png';
@@ -176,6 +176,7 @@ export default function CustomPaginationActionsTable(props) {
                                                 case "412":
                                                 case "420":
                                                 case "421":
+                                                case "1400":
                                                 case "422": job = "thief"
                                                     break;
                                                 case "2100":

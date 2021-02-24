@@ -6,7 +6,7 @@ import NavBar from './components/NavBar/NavBar';
 import Grid from '@material-ui/core/Grid';
 import Ranking from './pages/Ranking';
 import Login from './pages/Login';
-
+import Vote from './pages/Vote';
 function App() {
   return (
       <Grid container className="background">
@@ -26,6 +26,7 @@ function App() {
           <Switch>
             <Route path="/ranking" component={Ranking} />
             <Route path="/Login" component={Login}/>
+            <Route path="/" component={Vote}/>
             <Route path="/" component={Home} />
           </Switch>
 
