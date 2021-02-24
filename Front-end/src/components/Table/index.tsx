@@ -155,7 +155,7 @@ export default function CustomPaginationActionsTable(props) {
                                             default: job = "beginner"
                                         }//end switch
                                         return (<TableCell key={`tableCell-${index}`} style={{ width: 160 }} align="left">
-                                            <img src={`assets/image/rank/${job}.png`} alt={job}></img>
+                                            <img src={`${process.env.REACT_APP_BASE_URL}/assets/image/rank/${job}.png`} alt={job}></img>
                                         </TableCell>)
                                     } else
                                         return (<TableCell key={`tableCell-${index}`} style={{ width: 160 }} align="left">
