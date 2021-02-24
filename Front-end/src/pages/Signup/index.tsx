@@ -44,6 +44,7 @@ export default function Login() {
   });
 
   const { mainContainer, contentContainer, success } = useStyles();
+
   return (
     <Grid container className={[mainContainer, style.background].join(' ')} justify="center" >
 
@@ -88,9 +89,9 @@ export default function Login() {
           <Grid item md={12}>
             <TextField fullWidth label="Password" variant="outlined"
               error={state.passwordErr}
-              helperText={state.passwordErr ? 'Please fill in password!' : ''}
+              helperText={state.passwordErr ? state.password.length > 13 ? 'Password must be not be more than 14 characters' : 'Please fill in password!' : ''}
               value={state.password} onChange={(e) => {
-                if (e.target.value === "")
+                if (e.target.value === "" || e.target.value.length > 14)
                   setState({ ...state, passwordErr: true, password: e.target.value })
                 else
                   setState({ ...state, password: e.target.value, passwordErr: false })
@@ -125,7 +126,7 @@ export default function Login() {
           <Grid item md={12}>
             <Button
               onClick={async () => {
-                if (state.username.length !== 0 && state.password.length !== 0) {
+                if (state.username.length !== 0 && state.password.length !== 0 && state.password.length <= 14) {
                   const { data } = await Axios.post(`${process.env.REACT_APP_MSLANCER_BASE_URL}/auth/register`,
                     { username: state.username, password: state.password, email: state.email });
 
@@ -140,8 +141,14 @@ export default function Login() {
                     else
                       alert("A problem has occurred while registering, please contact the GM");
                 }
-                else
-                  setState({ ...state, usernameErr: true, passwordErr: true })
+                else {
+                  if (state.username.length === 0)
+                    setState({ ...state, usernameErr: true, passwordErr: false })
+                  else if (state.password.length === 0 || state.password.length > 14)
+                    setState({ ...state, usernameErr: false, passwordErr: true })
+                  else
+                    setState({ ...state, usernameErr: false, passwordErr: true })
+                }
               }}
               classes={{
                 containedPrimary: success,

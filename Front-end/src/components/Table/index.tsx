@@ -140,17 +140,17 @@ export default function CustomPaginationActionsTable(props) {
                                     {index + 1}
                                 </TableCell>
                                 {Object.keys(row).map((key, index) => {
-                                    
+                        
                                     if (key=== 'job') {
                                         var job = "";
-                                        switch (row[key]) {
-                                            case '000': job = "beginner";
+                                        switch (row[key].toString()) {
+                                            case "000": job = "beginner";
                                                 break;
-                                            case '100': job = "warrior";
+                                            case "100": job = "warrior";
                                                 break;
-                                            case '200': job = "magician";
+                                            case "200": job = "magician";
                                                 break;
-                                            case '300': job = "bowman";
+                                            case "300": job = "bowman";
                                                 break;
                                             default: job = "beginner"
                                         }//end switch

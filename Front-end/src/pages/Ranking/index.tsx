@@ -29,25 +29,6 @@ const [state,setState] = useState({characters:[]});
         fetchData();
     }, [])
 
-    function createData(rank, image, name, job, level) {
-        return { rank, image, name, job, level };
-    }
-
-    const data = [
-        createData('1', 'image', 'Magikarp', 'Magician', 50),
-        createData('1', 'image', 'Magikarp', 'Magician', 50),
-        createData('1', 'image', 'Magikarp', 'Magician', 50),
-        createData('1', 'image', 'Magikarp', 'Magician', 50),
-        createData('1', 'image', 'Magikarp', 'Magician', 50),
-        createData('1', 'image', 'Magikarp', 'Magician', 50),
-        createData('1', 'image', 'Magikarp', 'Magician', 50),
-        createData('1', 'image', 'Magikarp', 'Magician', 50),
-        createData('1', 'image', 'Magikarp', 'Magician', 50),
-        createData('1', 'image', 'Magikarp', 'Magician', 50),
-        createData('1', 'image', 'Magikarp', 'Magician', 50),
-        createData('1', 'image', 'Magikarp', 'Magician', 50),
-    ]
-
     const { innerContainer, container } = useStyles();
     return (
         <Container disableGutters maxWidth={false} className={container} style={{minHeight:"90vh",height:"100%"}}>
