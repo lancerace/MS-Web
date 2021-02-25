@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Clock from 'react-live-clock';
 import box_bg from '../../assets/image/cc_bg.jpg';
 import announcements from '../../assets/image/announcements.png';
+import downloads from '../../assets/image/downloads.jpg';
 import style from './styles.module.css';
 import Features from '../Feature';
 import Axios from "axios";
@@ -88,14 +89,24 @@ const Home = (props: any) => {
 
                             <Grid container item md={12} justify="center">
                                 <Grid item md={12} >
-                                    <Typography align="center" variant="h6">Download Client</Typography>
+                                    <Typography align="center" variant="h6"><b>Client</b></Typography>
                                 </Grid>
+                                <Grid item container justify="center" style={{ position: "relative", marginBottom:"2vh" }}>
+
+                                    <h3 onClick={() => { window.open("https://drive.google.com/drive/folders/119JOFdmR7LeWl0sdCQ1wDiYzVDtyg6ro?usp=sharing", "_blank") }} className={style.download} style={{
+                                        position: "absolute", bottom: "25%", zIndex: 20, cursor: "default"
+                                    }}>Downloads</h3>
+                                    <img
+                                        onClick={() => { window.open("https://drive.google.com/drive/folders/119JOFdmR7LeWl0sdCQ1wDiYzVDtyg6ro?usp=sharing", "_blank") }}
+                                        src={downloads} alt="downloads" style={{ width: "60%", borderRadius: "8%" }}>
+                                    </img>
+                                </Grid>
+
                                 <Grid item>
                                     <Button size="large" variant="contained" color="primary" onClick={() => {
-                                        window.open("https://drive.google.com/drive/folders/119JOFdmR7LeWl0sdCQ1wDiYzVDtyg6ro?usp=sharing", "_blank");
-                                    }}> Downloads
-                                    </Button>
-                                </Grid>
+                                        window.open("https://www.dropbox.com/s/m5lrnli8h7p3ix7/SeaMS.zip?dl=0", "_blank");
+                                    }}> Mirrors
+                                    </Button></Grid>
                             </Grid>
 
                             <Grid item md={12}>
@@ -110,10 +121,12 @@ const Home = (props: any) => {
                                 </Grid>
                             </Grid>
                             <Grid item md={12}>
-                                <Grid item md={12}><h3>Discord</h3> <hr></hr></Grid>
-                                <Grid container justify="center"><Button size="large" variant="contained" color="primary" onClick={() => {
-                                    window.open("https://discord.gg/bFTDZvM8Uu", "__blank");
-                                }}>Discord Link</Button></Grid>
+                                <Grid item md={12}><h3>Social</h3> <hr></hr></Grid>
+                                <Grid container justify="center">
+                                    <Button size="large" variant="contained" color="primary" onClick={() => {
+                                        window.open("https://discord.gg/bFTDZvM8Uu", "__blank");
+                                    }}>Discord</Button>
+                                </Grid>
                             </Grid>
                         </Grid>
 
