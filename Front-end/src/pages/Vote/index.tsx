@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -45,12 +46,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Vote() {
-const [state,setState] = useState({account:{id:"",characterSlot:"",lastlogin:"",name:"",nxCredit:"",nxPrepaid:"",rewardpoints:"",votepoints:""}});
-    useEffect(()=>{
-    
-        setState({account:JSON.parse(sessionStorage.getItem("account"))});
-    },[])
-    
+    const [state, setState] = useState({ account: { id: "", characterSlot: "", lastlogin: "", name: "", nxCredit: "", nxPrepaid: "", rewardpoints: "", votepoints: "" } });
+    const history = useHistory();
+    useEffect(() => {
+        if (!sessionStorage.getItem("account")) {
+            alert("please login");
+            history.push('/home');
+        }
+        setState({ account: JSON.parse(sessionStorage.getItem("account")) });
+    }, [])
+
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
@@ -58,7 +63,7 @@ const [state,setState] = useState({account:{id:"",characterSlot:"",lastlogin:"",
     };
     const classes = useStyles();
     return (
-     
+
         <Grid container justify="center" style={{ minHeight: "90vh" }}>
             <Grid container item md={10} style={{ height: "10vh", border: "0px solid gray" }}>
             </Grid>
@@ -81,14 +86,14 @@ const [state,setState] = useState({account:{id:"",characterSlot:"",lastlogin:"",
                 <TabPanel value={value} index={0}>
 
 
-                <a href={`https://gtop100.com/topsites/MapleStory/sitedetails/SeaMS--V83---x4-Exp---x1-Mesos---x3-Drops---PQ-Orientated---Release-date--2422021--99323?vote=1&pingAccountId=${state.account.id}`} title="MapleStory Private Server" target="_blank"> 
-		<img className="img-thumbnail" src="https://gtop100.com/assets/images/votebutton.jpg"  alt="MapleStory Private Server"/> 
-	</a> 
+                    <a href={`https://gtop100.com/topsites/MapleStory/sitedetails/SeaMS--V83---x4-Exp---x1-Mesos---x3-Drops---PQ-Orientated---Release-date--2422021--99323?vote=1&pingAccountId=${state.account.id}`} title="MapleStory Private Server" target="__blank">
+                        <img className="img-thumbnail" src="https://gtop100.com/assets/images/votebutton.jpg" alt="MapleStory Private Server" />
+                    </a>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    <Grid container justify="center" style={{border:"0px solid red"}} spacing={6}>
-                        <Grid item md={12} style={{border:"0px solid green" , textAlign:"center"}}><Typography variant="h5">Thank for voting</Typography></Grid>
-                        <Grid container justify="center" item md={12}><Button startIcon={<ThumbUpAltIcon/>}size="large" variant="contained" color="primary">Vote</Button></Grid>
+                    <Grid container justify="center" style={{ border: "0px solid red" }} spacing={6}>
+                        <Grid item md={12} style={{ border: "0px solid green", textAlign: "center" }}><Typography variant="h5">Thank for voting</Typography></Grid>
+                        <Grid container justify="center" item md={12}><Button startIcon={<ThumbUpAltIcon />} size="large" variant="contained" color="primary">Vote</Button></Grid>
                     </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
