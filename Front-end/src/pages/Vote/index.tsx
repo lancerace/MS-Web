@@ -92,7 +92,12 @@ export default function Vote() {
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     <Grid container justify="center" style={{ border: "0px solid red" }} spacing={6}>
-                        <Grid item md={12} style={{ border: "0px solid green", textAlign: "center" }}><Typography variant="h5">Thank for voting</Typography></Grid>
+                        <Grid item md={12} style={{ border: "0px solid green", textAlign: "center" }}><Typography variant="h5">
+                            <p style={{color:"red"}}>REMEMBER TO LOGOUT BEFORE YOU VOTE! </p>
+                            <p>Or it wont work!</p>
+                            Thank for voting. 5k NX Rewards
+                            
+                            </Typography></Grid>
                         <Grid container justify="center" item md={12}><Button startIcon={<ThumbUpAltIcon />} size="large" variant="contained" color="primary">
                             <a style={{ color: "white", textDecoration: "none" }} href={`https://gtop100.com/topsites/MapleStory/sitedetails/SeaMS--V83---x4-Exp---x1-Mesos---x3-Drops---PQ-Orientated---Release-date--2422021--99323?vote=1&pingUsername=${state.account.id}`} title="MapleStory Private Server" target="__blank">
                                 Vote</a>
