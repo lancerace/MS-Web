@@ -86,13 +86,14 @@ const Home = (props: any) => {
                     <Grid container style={{ border: "0px solid red" }} className={innerContainer} item md={10}> {/**inner container */}
 
                         <Grid container item md={3} style={{ border: "0px solid yellow" }}> {/**left column */}
-
                             <Grid container item md={12} justify="center">
+           
                                 <Grid item md={12} >
-                                    <Typography align="center" variant="h6"><b>Client</b></Typography>
+                                    <Typography variant="h6"><b>Clients</b></Typography>
+                                    <hr></hr>
                                 </Grid>
+                                
                                 <Grid item container justify="center" style={{ position: "relative", marginBottom:"2vh" }}>
-
                                     <h3 onClick={() => { window.open("https://drive.google.com/drive/folders/119JOFdmR7LeWl0sdCQ1wDiYzVDtyg6ro?usp=sharing", "_blank") }} className={style.download} style={{
                                         position: "absolute", bottom: "25%", zIndex: 20, cursor: "default"
                                     }}>Downloads</h3>
@@ -107,10 +108,12 @@ const Home = (props: any) => {
                                         window.open("https://www.dropbox.com/s/m5lrnli8h7p3ix7/SeaMS.zip?dl=0", "_blank");
                                     }}> Mirrors
                                     </Button></Grid>
+                                    
                             </Grid>
 
                             <Grid item md={12}>
-                                <Grid item> <Typography variant="h6" color="textSecondary">Server Time</Typography></Grid>
+                                <Grid item> <Typography variant="h6"><b>Server Time</b></Typography></Grid>
+                                <hr></hr>
                                 <Grid item>
                                     <h4>
                                         <Clock
