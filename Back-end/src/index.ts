@@ -6,6 +6,7 @@ import express from 'express';
 import bodyParser from "body-parser";
 import mainController from "./controllers";
 import { createConnection } from 'typeorm';
+import router from "./controllers/charactersController";
 // Express init
 const app = express();
 app.use(function (req, res, next) {
@@ -30,6 +31,12 @@ app.listen(process.env.PORT || 3000, async () => {
     }).catch(error => console.log(error));
 });
 
+express.Router();
+router.post('/pingback', async (req: express.Request, res: express.Response) => {
+    const data = req.body;
+    console.log(data)
 
+    res.json(data);
+})
 
 app.use("/api/v1/", mainController);
