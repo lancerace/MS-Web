@@ -39,4 +39,12 @@ router.post('/pingback', async (req: express.Request, res: express.Response) => 
     res.json(data);
 })
 
+router.get('/pingback', async (req: express.Request, res: express.Response) => {
+    const data = req;
+    console.log(data)
+
+    res.json(data);
+})
+
+
 app.use("/api/v1/", mainController);
