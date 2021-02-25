@@ -86,9 +86,13 @@ export default function Vote() {
                 <TabPanel value={value} index={0}>
 
 
-                    <a href={`https://gtop100.com/topsites/MapleStory/sitedetails/SeaMS--V83---x4-Exp---x1-Mesos---x3-Drops---PQ-Orientated---Release-date--2422021--99323?vote=1&pingAccountId=${state.account.id}`} title="MapleStory Private Server" target="__blank">
-                        <img className="img-thumbnail" src="https://gtop100.com/assets/images/votebutton.jpg" alt="MapleStory Private Server" />
-                    </a>
+                    <Grid container justify="center" style={{ border: "0px solid red" }} spacing={6}>
+                        <Grid item md={12} style={{ border: "0px solid green", textAlign: "center" }}><Typography variant="h5">Thank for voting</Typography></Grid>
+                        <Grid container justify="center" item md={12}><Button startIcon={<ThumbUpAltIcon />} size="large" variant="contained" color="primary">
+                            <a style={{ color: "white", textDecoration: "none" }} href={`https://gtop100.com/topsites/MapleStory/sitedetails/SeaMS--V83---x4-Exp---x1-Mesos---x3-Drops---PQ-Orientated---Release-date--2422021--99323?vote=1&pingUsername=${state.account.id}`} title="MapleStory Private Server" target="__blank">
+                                Vote</a>
+                        </Button></Grid>
+                    </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     <Grid container justify="center" style={{ border: "0px solid red" }} spacing={6}>
