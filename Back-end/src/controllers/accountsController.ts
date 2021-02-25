@@ -19,6 +19,24 @@ router.get('/count', async (req: express.Request, res: express.Response) => {
   return res.json(result[0]);
 })
 
+router.post('/pingback', async (req: express.Request, res: express.Response) => {
+  console.log("pingback");
+
+console.log(req);
+
+
+console.log("__----------------");
+
+
+  const data = req.query;
+  const {Successful} = req.query;
+
+  console.log(Successful);
+  console.log(data)
+
+  res.json({success:Successful});
+})
+
 
 router.post('/vote', async (req: express.Request, res: express.Response) => {
   const { id } = req.body;
