@@ -21,14 +21,20 @@ router.get('/count', async (req: express.Request, res: express.Response) => {
 
 
 router.post('/vote', async (req: express.Request, res: express.Response) => {
-  const { id } = req.body();
-
-  await getConnection()
+  const { id } = req.body;
+console.log(req.body);
+  const { affected } = await getConnection()
     .createQueryBuilder()
     .update(Account)
-    .set({ nxCredit: () => `nxCredits+${process.env.VOTE_NX}`, votepoints: () => `votepoints+${1}` })
+    .set({ nxCredit: () => `nxCredit+${process.env.VOTE_NX}`, votepoints: () => `votepoints+${1}` })
     .where("id = :id", { id: id })
     .execute();
+
+
+  if (affected && affected > 0)
+    res.json({ rowAffected: affected });
+  else
+    res.status(400).send({ message: "something wrong.vote unsuccessful" });
 
 });
 
