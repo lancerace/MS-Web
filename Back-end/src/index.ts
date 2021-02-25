@@ -34,8 +34,16 @@ app.listen(process.env.PORT || 3000, async () => {
 express.Router();
 router.post('/pingback', async (req: express.Request, res: express.Response) => {
     console.log("pingback");
+
+console.log(req);
+
+
+console.log("__----------------");
+
+
     const data = req.query;
     const {Successful} = req.query;
+
     console.log(Successful);
     console.log(data)
 
