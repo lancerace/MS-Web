@@ -15,7 +15,7 @@ function App() {
             <NavBar.Item to="/">Home</NavBar.Item>
             <NavBar.Item to="/">Information</NavBar.Item>
             <NavBar.Item to="/ranking">Ranking</NavBar.Item>
-            <NavBar.Item to="/">Vote</NavBar.Item>
+            <NavBar.Item to="/Vote">Vote</NavBar.Item>
             
             <NavBar.Item to="/Login">Log In</NavBar.Item>
             <NavBar.Item to="/Signup">Register</NavBar.Item>
