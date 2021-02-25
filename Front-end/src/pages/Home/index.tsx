@@ -112,7 +112,7 @@ const Home = (props: any) => {
                             <Grid item md={12}>
                                 <Grid item md={12}><h3>Discord</h3> <hr></hr></Grid>
                                 <Grid container justify="center"><Button size="large" variant="contained" color="primary" onClick={() => {
-                                    window.open("https://discord.gg/AbzxaHVc", "__blank");
+                                    window.open("https://discord.gg/bFTDZvM8Uu", "__blank");
                                 }}>Discord Link</Button></Grid>
                             </Grid>
                         </Grid>
@@ -126,9 +126,8 @@ const Home = (props: any) => {
                                 <Grid container justify="center" item md={12} style={{ border: "0px solid red" }}>
 
                                     <AnnouncementItems>
-                                        <span>Alpha Release - Welcome to the server!</span>
+                                        <span>Beta Release - Welcome to the server!.</span>
                                     </AnnouncementItems>
-
                                 </Grid>
                             </Grid>
                         </Grid>

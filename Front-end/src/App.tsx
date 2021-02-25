@@ -26,7 +26,7 @@ function App() {
           <Switch>
             <Route path="/ranking" component={Ranking} />
             <Route path="/Login" component={Login}/>
-            <Route path="/" component={Vote}/>
+            <Route path="/Vote" component={Vote}/>
             <Route path="/" component={Home} />
           </Switch>
 
