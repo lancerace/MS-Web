@@ -94,7 +94,7 @@ export default function Vote() {
                     <Grid container justify="center" style={{ border: "0px solid red" }} spacing={6}>
                         <Grid item md={12} style={{ border: "0px solid green", textAlign: "center" }}><Typography variant="h5">
                             <p style={{color:"red"}}>REMEMBER TO LOGOUT BEFORE YOU VOTE! </p>
-                            <p>Or it wont work!</p>
+                            <p>Or it wont work! Wait for 3 minutes before login after vote</p>
                             Thank for voting. 5k NX Rewards
                             
                             </Typography></Grid>
