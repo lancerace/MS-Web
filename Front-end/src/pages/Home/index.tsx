@@ -123,14 +123,6 @@ const Home = (props: any) => {
                                     </h4>
                                 </Grid>
                             </Grid>
-                            <Grid item md={12}>
-                                <Grid item md={12}><h3>Social</h3> <hr></hr></Grid>
-                                <Grid container justify="center">
-                                    <Button size="large" variant="contained" color="primary" onClick={() => {
-                                        window.open("https://discord.gg/bFTDZvM8Uu", "__blank");
-                                    }}>Discord</Button>
-                                </Grid>
-                            </Grid>
                         </Grid>
 
                         <Grid container item md={5}>{/**middle column*/}
@@ -197,8 +189,13 @@ const Home = (props: any) => {
                                 </Grid>
 
                             </Grid>
-
-                            <Grid item md={12} style={{ visibility: "hidden" }}>
+                            <Grid item md={12}>
+                                <Grid item md={12}><h3>Social</h3> <hr></hr></Grid>
+                                <Grid container justify="center">
+                                    <Button size="large" variant="contained" color="primary" onClick={() => {
+                                        window.open("https://discord.gg/bFTDZvM8Uu", "__blank");
+                                    }}>Discord</Button>
+                                </Grid>
                             </Grid>
 
 
