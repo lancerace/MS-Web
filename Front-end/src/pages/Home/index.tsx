@@ -117,7 +117,8 @@ const Home = (props: any) => {
                                 <Grid item>
                                     <h4>
                                         <Clock
-                                            format={'dddd, MMMM Mo, YYYY, h:mm:ss A'}
+                                        date={Date.now()}
+                                            format={'ddd, DD MMMM YYYY, h:mm:ss A'}
                                             ticking={true}
                                             timezone={'Asia/Singapore'} />
                                     </h4>
