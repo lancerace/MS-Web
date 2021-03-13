@@ -81,8 +81,7 @@ const Feature = (props: any) => {
                              <span> Classic Gameplay</span>
                                  <p></p>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                    across all continents except Antarctica
+                                    SeaMS aim to be GMS-like but with some tweak that make the game more enjoyable.
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
@@ -101,8 +100,7 @@ const Feature = (props: any) => {
                              <span> No pay to win</span>
                                  <p></p>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                    across all continents except Antarctica
+                                    Restricly no p2w to ensure a fair gameplay to all players. We believes that a good server is to have no unfair advantages.
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
@@ -121,8 +119,8 @@ const Feature = (props: any) => {
                              <span> Community based</span>
                                  <p></p>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                    across all continents except Antarctica
+                                    We want a community based server where players interact with each other more often.
+                                    This includes some of the other features that will contribute to this.
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
@@ -144,8 +142,7 @@ const Feature = (props: any) => {
                              <span> No Chimney Mansion </span>
                                  <p></p>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                    across all continents except Antarctica
+                                    This map is disabled to encourage community gameplay based such as PQ.
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
@@ -163,8 +160,7 @@ const Feature = (props: any) => {
                              <span> Party Quest min 2 players</span>
                                  <p></p>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                    across all continents except Antarctica
+                                    We are working toward lowering the player requirements to enter PQ. Kerning PQ, Ludi PQ and so on
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
@@ -182,8 +178,7 @@ const Feature = (props: any) => {
                              <span> Vote for NX</span>
                                  <p></p>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                    across all continents except Antarctica
+                                    You can vote for the server to get NX rewards. Supporting the server to get more players too!
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
