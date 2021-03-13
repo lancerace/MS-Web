@@ -137,6 +137,10 @@ const Home = (props: any) => {
                                     <AnnouncementItems>
                                         <span>Beta Release - Welcome to the server!.</span>
                                     </AnnouncementItems>
+                                    <p></p>
+                                    <AnnouncementItems>
+                                        <span>Leveling milestone rewards for official release</span>
+                                    </AnnouncementItems>
                                 </Grid>
                             </Grid>
                         </Grid>
