@@ -7,7 +7,7 @@ const router: express.Router = express.Router();
 
 router.get('/online', async (req: express.Request, res: express.Response) => {
 
-  const result = await getManager().query(`SELECT COUNT(*) as account_online FROM accounts where loggedin = 2`);
+  const result = await getManager().query(`SELECT COUNT(*) as account_online FROM accounts where loggedin = 2 AND webadmin != 1`);
 
   return res.json(result[0]);
 })
