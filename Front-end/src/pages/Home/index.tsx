@@ -34,7 +34,7 @@ const AnnouncementItems = (props: any) => {
     }));
 
     const { item } = useStyles();
-    return (<div className={item} style={{ width: "80",display:"flex",alignItems:"center"}}>{props.children}</div>);
+    return (<div className={item} style={{ width: "80", display: "flex", alignItems: "center" }}>{props.children}</div>);
 }
 
 const Home = (props: any) => {
@@ -82,23 +82,23 @@ const Home = (props: any) => {
                 <Grid container item md={12} style={{ border: "0px solid gray" }}>
                 </Grid>
                 <Grid container item md={12} style={{ border: "0px solid red", width: "100%" }} justify="center">
-                    <Grid container style={{ border: "0px solid red",opacity:"90%" }} className={innerContainer} item md={10}> {/**inner container */}
+                    <Grid container style={{ border: "0px solid red", opacity: "90%" }} className={innerContainer} item md={10}> {/**inner container */}
 
                         <Grid container item md={3} style={{ border: "0px solid yellow" }}> {/**left column */}
                             <Grid container item md={12} justify="center">
-           
+
                                 <Grid item md={12} >
                                     <Typography variant="h6"><b>Clients</b></Typography>
                                     <hr></hr>
                                 </Grid>
-                                
-                                <Grid item container justify="center" style={{ position: "relative", marginBottom:"2vh" }}>
+
+                                <Grid item container justify="center" style={{ position: "relative", marginBottom: "2vh" }}>
                                     <h4 onClick={() => { window.open("https://drive.google.com/drive/folders/119JOFdmR7LeWl0sdCQ1wDiYzVDtyg6ro?usp=sharing", "_blank") }} className={style.download} style={{
                                         position: "absolute", bottom: "25%", zIndex: 20, cursor: "pointer"
                                     }}>Downloads</h4>
                                     <img
                                         onClick={() => { window.open("https://drive.google.com/drive/folders/119JOFdmR7LeWl0sdCQ1wDiYzVDtyg6ro?usp=sharing", "_blank") }}
-                                        src={downloads} alt="downloads" style={{ width: "50%", borderRadius: "8%", cursor:"pointer" }}>
+                                        src={downloads} alt="downloads" style={{ width: "50%", borderRadius: "8%", cursor: "pointer" }}>
                                     </img>
                                 </Grid>
 
@@ -107,7 +107,7 @@ const Home = (props: any) => {
                                         window.open("https://www.dropbox.com/s/m5lrnli8h7p3ix7/SeaMS.zip?dl=0", "_blank");
                                     }}> Mirrors
                                     </Button></Grid>
-                                    
+
                             </Grid>
 
                             <Grid item md={12}>
@@ -116,7 +116,7 @@ const Home = (props: any) => {
                                 <Grid item>
                                     <h4>
                                         <Clock
-                                        date={Date.now()}
+                                            date={Date.now()}
                                             format={'ddd, DD MMMM YYYY, h:mm:ss A'}
                                             ticking={true}
                                             timezone={'Asia/Singapore'} />
@@ -127,36 +127,45 @@ const Home = (props: any) => {
 
                         <Grid container item md={5}>{/**middle column*/}
 
-                            <Grid item md={12}>
+                            <Grid item md={12} sm={12}>
                                 <Grid item md={12} container justify="center" style={{ marginBottom: "2vh" }}><img src={announcements} alt="latest announcement"></img>
                                 </Grid>
-                                <hr></hr>
-                                <Grid container justify="center" item md={12} style={{ border: "0px solid red" }}>
+    
+                                <Grid container justify="center" item md={12}>
 
                                     <AnnouncementItems>
-                                        <div style={{display:"flex", width:"100%"}}>
-                                            <div style={{width: "90%"}}>Beta Release - Welcome to the server!</div>
-                                            <div>12.2.21</div>
-                                        </div>
-                                    </AnnouncementItems>
-                                    <p></p>
-                                    <AnnouncementItems>
-                                   
-                                    <div style={{display:"flex", width:"100%"}}>
-                                            <div style={{width: "90%"}}>Leveling milestone rewards for official release!</div>
-                                            <div>12.2.21</div>
-                                        </div>
-                                    </AnnouncementItems>
-                                    <p></p>
-                                    <AnnouncementItems>
-                                    <div style={{display:"flex", width:"100%"}}>
-                                            <div style={{width: "90%"}}>Pokemon NPC added in FM!</div>
+                                        <div style={{ display: "flex", width: "100%" }}>
+                                            <div style={{ width: "90%" }}>Pokemon NPC added in FM!</div>
                                             <div>16.3.21</div>
+                                        </div>
+                                    </AnnouncementItems>
+                                    <p></p>
+                                    <AnnouncementItems>
+
+                                        <div style={{ display: "flex", width: "100%" }}>
+                                            <div style={{ width: "90%" }}>Leveling milestone rewards for official release!</div>
+                                            <div>12.2.21</div>
+                                        </div>
+                                    </AnnouncementItems>
+                                    <p></p>
+                                    <AnnouncementItems>
+                                        <div style={{ display: "flex", width: "100%" }}>
+                                            <div style={{ width: "90%" }}>Beta Release - Welcome to the server!</div>
+                                            <div>12.2.21</div>
                                         </div>
                                     </AnnouncementItems>
                                 </Grid>
                             </Grid>
-                            
+
+
+                            <Grid container item sm={12} md={12} style={{minHeight:"35vh"}}>
+                                <Grid item>
+                                    asgsag
+                                    ddg
+                                    dgdg
+                                    dgd
+                                </Grid>
+                            </Grid>
                         </Grid>
 
                         <Grid container item md={3} style={{ border: "0px solid green" }}>{/**right column*/}
