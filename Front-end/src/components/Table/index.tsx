@@ -14,7 +14,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-import { Grid, TableHead } from '@material-ui/core';
+import { CircularProgress, Grid, TableHead } from '@material-ui/core';
 
 
 import crown1 from '../../assets/image/rank/crown1.png';
@@ -129,78 +129,91 @@ export default function CustomPaginationActionsTable(props) {
                             })}
                         </TableRow>
                     </TableHead>
-                    <TableBody>
-                        {
-                            (rowsPerPage > 0
-                                ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                : data
-                            ).map((row, index) => (
-                                <TableRow key={`${row.name}-${index}`}>
-                                    <TableCell style={{ width: 160 }} align="left">
-                                        {index + 1}
-                                    </TableCell>
-                                    {Object.keys(row).map((key, index) => {
+                    {data.length === 0 ?
+                        <TableBody>
+                            <TableRow>
+                                <TableCell> 
+                                    <CircularProgress size={15}></CircularProgress>
+                                </TableCell>
+                                {headers.map(() => {
+                                    return (
+                                        <TableCell>
+                                            <CircularProgress size={15}></CircularProgress>
+                                        </TableCell>)
+                                })
+                                }</TableRow>
+                        </TableBody> :
+                        <TableBody>
+                            {
+                                (rowsPerPage > 0 ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    : data).map((row, index) => (
+                                        <TableRow key={`${row.name}-${index}`}>
+                                            <TableCell style={{ width: 160 }} align="left">
+                                                {index + 1}
+                                            </TableCell>
+                                            {Object.keys(row).map((key, index) => {
 
-                                        if (key === 'job') {
-                                            var job = "";
-                                            switch (row[key].toString()) {
-                                                case "000": job = "beginner";
-                                                    break;
-                                                case "100":
-                                                case "110":
-                                                case "111":
-                                                case "130":
-                                                case "120": job = "warrior";
-                                                    break;
-                                                case "200":
-                                                case "210":
-                                                case "211":
-                                                case "212":
-                                                case "220":
-                                                case "221":
-                                                case "222":
-                                                case "230":
-                                                case "231":
-                                                case "232": job = "magician";
-                                                    break;
-                                                case "310":
-                                                case "311":
-                                                case "312":
-                                                case "320":
-                                                case "321":
-                                                case "300": job = "bowman";
-                                                    break;
-                                                case "400":
-                                                case "410":
-                                                case "411":
-                                                case "412":
-                                                case "420":
-                                                case "421":
-                                                case "1400":
-                                                case "422": job = "thief"
-                                                    break;
-                                                case "2100":
-                                                case "2110":
-                                                case "2111":
-                                                case "2112": job = "aran"
-                                                    break;
-                                                default: job = "beginner"
-                                            }//end switch
-                                            return (<TableCell key={`tableCell-${index}`} style={{ width: 160 }} align="left">
-                                                <img src={`${process.env.REACT_APP_BASE_URL}/assets/image/rank/${job}.png`} alt={job}></img>
-                                            </TableCell>)
-                                        } else
-                                            return (<TableCell key={`tableCell-${index}`} style={{ width: 160 }} align="left">
-                                                {row[key]}
-                                            </TableCell>)
-                                    })}
-                                </TableRow>))}
-                        {emptyRows > 0 && (
-                            <TableRow style={{ height: 53 * emptyRows }}>
-                                <TableCell colSpan={6} />
-                            </TableRow>
-                        )}
-                    </TableBody>
+                                                if (key === 'job') {
+                                                    var job = "";
+                                                    switch (row[key].toString()) {
+                                                        case "000": job = "beginner";
+                                                            break;
+                                                        case "100":
+                                                        case "110":
+                                                        case "111":
+                                                        case "130":
+                                                        case "120": job = "warrior";
+                                                            break;
+                                                        case "200":
+                                                        case "210":
+                                                        case "211":
+                                                        case "212":
+                                                        case "220":
+                                                        case "221":
+                                                        case "222":
+                                                        case "230":
+                                                        case "231":
+                                                        case "232": job = "magician";
+                                                            break;
+                                                        case "310":
+                                                        case "311":
+                                                        case "312":
+                                                        case "320":
+                                                        case "321":
+                                                        case "300": job = "bowman";
+                                                            break;
+                                                        case "400":
+                                                        case "410":
+                                                        case "411":
+                                                        case "412":
+                                                        case "420":
+                                                        case "421":
+                                                        case "1400":
+                                                        case "422": job = "thief"
+                                                            break;
+                                                        case "2100":
+                                                        case "2110":
+                                                        case "2111":
+                                                        case "2112": job = "aran"
+                                                            break;
+                                                        default: job = "beginner"
+                                                    }//end switch
+                                                    return (<TableCell key={`tableCell-${index}`} style={{ width: 160 }} align="left">
+                                                        <img src={`${process.env.REACT_APP_BASE_URL}/assets/image/rank/${job}.png`} alt={job}></img>
+                                                    </TableCell>)
+                                                } else
+                                                    return (<TableCell key={`tableCell-${index}`} style={{ width: 160 }} align="left">
+                                                        {row[key]}
+                                                    </TableCell>)
+                                            })}
+                                        </TableRow>))}
+                            {emptyRows > 0 && (
+                                <TableRow style={{ height: 53 * emptyRows }}>
+                                    <TableCell colSpan={6} />
+                                </TableRow>
+                            )}
+                        </TableBody>
+                    }
                     <TableFooter>
                         <TableRow>
                             <TablePagination
