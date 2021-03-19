@@ -133,12 +133,12 @@ export default function CustomPaginationActionsTable(props) {
                         <TableBody>
                             <TableRow>
                                 <TableCell> 
-                                    <CircularProgress size={15}></CircularProgress>
+                                    <CircularProgress size={30}></CircularProgress>
                                 </TableCell>
                                 {headers.map(() => {
                                     return (
                                         <TableCell>
-                                            <CircularProgress size={15}></CircularProgress>
+                                            <CircularProgress size={30}></CircularProgress>
                                         </TableCell>)
                                 })
                                 }</TableRow>
