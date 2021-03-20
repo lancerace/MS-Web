@@ -152,7 +152,7 @@ const Home = (props: any) => {
                             <Grid container item sm={12} md={12} style={{ opacity: "90%", height:"45vh" }}>
 
                                 <Switch>
-                                    <Route path="/1">
+                                    <Route exact path="/">
                                         <AnnouncementPage title="Pokemon NPC">
                                             <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
                                                 <Grid item md={12} style={{ border: "0px solid gray" }}>
