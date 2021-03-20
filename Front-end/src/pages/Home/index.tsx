@@ -13,6 +13,7 @@ import AnalogClock from '../../components/Clock';
 
 import chansey from "../../assets/image/chansey.gif";
 import abra from "../../assets/image/abra.gif"
+import markofbeta from "../../assets/image/markofbeta.gif"
 
 interface IState {
     status: string;
@@ -148,7 +149,7 @@ const Home = (props: any) => {
                             </Grid>
 
 
-                            <Grid container item sm={12} md={12} style={{ opacity: "90%" }}>
+                            <Grid container item sm={12} md={12} style={{ opacity: "90%", height:"45vh" }}>
 
                                 <Switch>
                                     <Route path="/1">
@@ -174,10 +175,21 @@ const Home = (props: any) => {
                                     </Route>
                                     <Route path="/2">
                                         <AnnouncementPage title="Leveling milestone">
-                                            <Grid container>
-                                                <Grid item md={12} style={{ border: "1px solid gray", minHeight: "10vh" }}>
-                                                </Grid>
-                                                <Grid item md={12}>
+                                        <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
+                                                <Grid item md={12} style={{ border: "0px solid gray" }}>
+                                                    Achieve Leveling milestone and be rewarded the mark of beta during official release! <p></p><Grid item md={3}><img src={markofbeta} alt="markofbeta"></img></Grid>
+                                                    <p>
+                                                    <b>Lv 70:</b> Mark of beta (red).  <b>Stats:</b> +5 stats to all
+                                                    </p>
+                                                    <p>
+                                                    <b>Lv 100:</b> Mark of beta (purple). <b>Stats:</b> +10 stats to all
+                                                    </p>
+                                                    <p>
+                                                    <b>Lv 120:</b> Mark of beta (blue). <b>Stats:</b> +5 stats to all. 1wa, 1ma  
+                                                    </p>
+                                                    <p>
+                                                    <b>Lv 150:</b> Mark of beta (black). <b>Stats:</b> +10 stats to all, 1 wa, 1ma
+                                                    </p>
                                                 </Grid>
                                             </Grid>
                                         </AnnouncementPage>
@@ -185,11 +197,11 @@ const Home = (props: any) => {
 
                                     <Route path="/3">
                                         <AnnouncementPage title="Beta release">
-                                            <Grid container>
-                                                <Grid item md={12} style={{ border: "1px solid gray", minHeight: "10vh" }}>
+                                        <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
+                                                <Grid item md={12} style={{ border: "0px solid gray" }}>
+                                                    Server launched! Beta release will last 4-6 months. 
                                                 </Grid>
-                                                <Grid item md={12}>
-                                                </Grid>
+
                                             </Grid>
                                         </AnnouncementPage>
                                     </Route>
