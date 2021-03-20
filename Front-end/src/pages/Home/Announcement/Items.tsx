@@ -31,5 +31,5 @@ export function AnnouncementItems(props: any) {
     }));
 
     const { item } = useStyles();
-    return (<div className={item}><Link to={props.url || ""} style={{ textDecoration: "none", width: "100%" }}>{props.children}</Link></div>);
+    return (<div className={item}><Link to={props.url || "/"} style={{ textDecoration: "none", width: "100%" }}>{props.children}</Link></div>);
 }
