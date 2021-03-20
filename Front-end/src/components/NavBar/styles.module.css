@@ -9,6 +9,9 @@
   font-family: roboto,sans-serif;
   font-size: 20px;
   font-weight:400;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
 }
 .root> li> a{
   color:#666;
@@ -16,14 +19,20 @@
   font-size:14px;
 }
 
-.root > li > a:hover {
-  color: red;
+.root > li:hover {
+  transform :scale(1.4);
 }
-:global(.li--Blue) > li > a:hover{
-  color: #222
+
+.root > li > a:hover{
+  color:black;
 }
+
+.root > ul{
+  border:1px solid black;
+}
+
 .root > li {
-  padding:3.5vh;
+  padding:3.5vh; 
 }
 .root > li:nth-child(2){
   margin-right:auto;
