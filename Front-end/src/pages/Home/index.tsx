@@ -1,45 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Button, makeStyles, Divider, Typography, CircularProgress } from '@material-ui/core';
+import { Grid, Button, makeStyles, Divider, Typography, CircularProgress} from '@material-ui/core';
 import { Route, Switch } from 'react-router-dom';
-import Clock from 'react-live-clock';
 import box_bg from '../../assets/image/cc_bg.jpg';
 import announcements from '../../assets/image/announcements.png';
-import downloads from '../../assets/image/downloads.jpg';
 import style from './styles.module.css';
 import Features from '../Feature';
 import Axios from "axios";
-
+import { AnnouncementItems } from './Announcement/Items';
+import discordIcon from "../../assets/image/join-us-on-discord.png";
+import Clock from "react-live-clock";
+//import AnalogClock from 'analog-clock-react';
+import AnalogClock from 'react-clock';
+import 'react-clock/dist/Clock.css';
 interface IState {
     status: string;
     characters: string;
     accounts: string
     online: string;
+    date: Date;
 }
 
-const AnnouncementItems = (props: any) => {
-
-    const useStyles = makeStyles(theme => ({
-        item: {
-            width: "392px",
-            borderRadius: "3px",
-            height: "27px",
-            background: "linear-gradient(to bottom, #035b79 0%,#1b8fb7 100%)",
-            '& > div > *': {
-                color: "white",
-                padding: "0px 10px",
-                fontSize: "13px",
-                fontFamily: "arial"
-            }
-        }
-    }));
-
-    const { item } = useStyles();
-    return (<div className={item} style={{ width: "80", display: "flex", alignItems: "center" }}>{props.children}</div>);
-}
+const AnnouncementPage = (props: any) => {
+    return (<Grid item md={12} sm={12}>
+                <Typography variant="h6"><b>{props.title}</b></Typography>
+                <hr></hr>
+                {props.children}
+            </Grid>)}
 
 const Home = (props: any) => {
 
-    const [state, setState] = useState<IState>({ status: "", characters: "", accounts: "", online: "" });
+    const [state, setState] = useState<IState>({ status: "", characters: "", accounts: "", online: "", date: new Date() });
 
     const useStyles = makeStyles({
         innerContainer: {
@@ -64,8 +54,11 @@ const Home = (props: any) => {
 
     const { innerContainer } = useStyles();
 
-
     useEffect(() => {
+        setInterval(
+            () => setState({ ...state,date: new Date() }),
+            1000
+          );
 
         const fetchData = async () => {
             const online = await Axios.get(`${process.env.REACT_APP_MSLANCER_BASE_URL}/accounts/online`);
@@ -82,93 +75,92 @@ const Home = (props: any) => {
                 <Grid container item md={12} style={{ border: "0px solid gray" }}>
                 </Grid>
                 <Grid container item md={12} style={{ border: "0px solid red", width: "100%" }} justify="center">
-                    <Grid container style={{ border: "0px solid red", opacity: "90%" }} className={innerContainer} item md={10}> {/**inner container */}
+                    <Grid container style={{ border: "0px solid red"}} className={innerContainer} item md={10}> {/**inner container */}
 
-                        <Grid container item md={3} style={{ border: "0px solid yellow" }}> {/**left column */}
-                            <Grid container item md={12} justify="center">
+                        <Grid container md={3} direction="column" style={{ border: "0px solid yellow", opacity: "90%" }}> {/**left column */}
+                            <Grid md={12} sm={12} container item direction="column" style={{ flex:1, maxHeight: "20vh" }}>
 
-                                <Grid item md={12} >
+                                <Grid item>
                                     <Typography variant="h6"><b>Clients</b></Typography>
                                     <hr></hr>
                                 </Grid>
 
-                                <Grid item container justify="center" style={{ position: "relative", marginBottom: "2vh" }}>
-                                    <h4 onClick={() => { window.open("https://drive.google.com/drive/folders/119JOFdmR7LeWl0sdCQ1wDiYzVDtyg6ro?usp=sharing", "_blank") }} className={style.download} style={{
-                                        position: "absolute", bottom: "25%", zIndex: 20, cursor: "pointer"
-                                    }}>Downloads</h4>
-                                    <img
-                                        onClick={() => { window.open("https://drive.google.com/drive/folders/119JOFdmR7LeWl0sdCQ1wDiYzVDtyg6ro?usp=sharing", "_blank") }}
-                                        src={downloads} alt="downloads" style={{ width: "50%", borderRadius: "8%", cursor: "pointer" }}>
-                                    </img>
-                                </Grid>
-
-                                <Grid item>
-                                    <Button size="large" variant="contained" color="primary" onClick={() => {
-                                        window.open("https://www.dropbox.com/s/m5lrnli8h7p3ix7/SeaMS.zip?dl=0", "_blank");
-                                    }}> Mirrors
-                                    </Button></Grid>
-
-                            </Grid>
-
-                            <Grid item md={12}>
-                                <Grid item> <Typography variant="h6"><b>Server Time</b></Typography></Grid>
-                                <hr></hr>
-                                <Grid item>
-                                    <h4>
-                                        <Clock
-                                            date={Date.now()}
-                                            format={'ddd, DD MMMM YYYY, h:mm:ss A'}
-                                            ticking={true}
-                                            timezone={'Asia/Singapore'} />
-                                    </h4>
+                                <Grid container justify="center" alignItems="center">
+                                        <Button size="large" variant="contained" color="primary" style={{background:"green"}} 
+                                        onClick={() => { window.open("https://drive.google.com/drive/folders/119JOFdmR7LeWl0sdCQ1wDiYzVDtyg6ro?usp=sharing", "_blank") }}>
+                                            Download
+                                        </Button>              
                                 </Grid>
                             </Grid>
+
+                            <Grid container item md={12} sm={12} style={{flexBasis:1}} direction="column">
+                                <Grid item>
+                                    <Typography variant="h6">
+                                        <b>Server Time</b>
+                                        <hr></hr>
+                                    </Typography>
+                                    <Clock
+                                        date={Date.now()}
+                                        format={'ddd, DD MMMM YYYY, h:mm:ss A'}
+                                        ticking={true}
+                                        timezone={'Asia/Singapore'} />
+                                </Grid>
+
+                                <Grid item style={{height:"3vh"}}></Grid>
+
+                                <Grid container justify="center" item style={{border:"0px solid red"}}>
+                                <AnalogClock value={state.date}></AnalogClock>
+                                </Grid>       
+                            </Grid>                      
                         </Grid>
 
-                        <Grid container item md={5}>{/**middle column*/}
+                        <Grid container item md={5} sm={12}>{/**middle column*/}
 
                             <Grid item md={12} sm={12}>
                                 <Grid item md={12} container justify="center" style={{ marginBottom: "2vh" }}><img src={announcements} alt="latest announcement"></img>
                                 </Grid>
-    
+
                                 <Grid container justify="center" item md={12}>
 
                                     <AnnouncementItems>
-                                        <div style={{ display: "flex", width: "100%" }}>
-                                            <div style={{ width: "90%" }}>Pokemon NPC added in FM!</div>
-                                            <div>16.3.21</div>
+                                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                            <div>Pokemon NPC added in FM!</div>
+                                            <div>16.3.21.</div>
                                         </div>
                                     </AnnouncementItems>
                                     <p></p>
                                     <AnnouncementItems>
-
-                                        <div style={{ display: "flex", width: "100%" }}>
-                                            <div style={{ width: "90%" }}>Leveling milestone rewards for official release!</div>
-                                            <div>12.2.21</div>
+                                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                            <div>Leveling milestone rewards for official release!</div>
+                                            <div>12.2.21.</div>
                                         </div>
                                     </AnnouncementItems>
                                     <p></p>
                                     <AnnouncementItems>
-                                        <div style={{ display: "flex", width: "100%" }}>
-                                            <div style={{ width: "90%" }}>Beta Release - Welcome to the server!</div>
-                                            <div>12.2.21</div>
+                                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                            <div>Beta Release - Welcome to the server!</div>
+                                            <div>12.2.21.</div>
                                         </div>
                                     </AnnouncementItems>
                                 </Grid>
                             </Grid>
 
 
-                            <Grid container item sm={12} md={12} style={{minHeight:"35vh"}}>
-                                <Grid item>
-                                    asgsag
-                                    ddg
-                                    dgdg
-                                    dgd
-                                </Grid>
+                            <Grid container item sm={12} md={12} style={{ minHeight: "35vh",opacity:"90%" }}>
+                                <AnnouncementPage title="Pokemon NPC">
+                                    <Grid container >
+                                        <Grid item md={12} style={{border:"1px solid gray",minHeight:"10vh"}}>
+
+                                        </Grid>
+                                        <Grid item md={12}>
+
+                                        </Grid>
+                                    </Grid>  
+                                </AnnouncementPage>
                             </Grid>
                         </Grid>
 
-                        <Grid container item md={3} style={{ border: "0px solid green" }}>{/**right column*/}
+                        <Grid container item md={3} style={{ border: "0px solid green",opacity:"90%" }}>{/**right column*/}
                             <Grid item md={12}>
                                 <Grid item md={12}><h3>Server</h3></Grid>
                                 <hr></hr>
@@ -218,11 +210,12 @@ const Home = (props: any) => {
 
                             </Grid>
                             <Grid item md={12}>
-                                <Grid item md={12}><h3>Social</h3> <hr></hr></Grid>
+                                <Grid item md={12}><h3>Social</h3></Grid>
                                 <Grid container justify="center">
-                                    <Button size="large" variant="contained" color="primary" onClick={() => {
+                                    
+                                    <img src={discordIcon} alt="Discord" style={{width:"200px", cursor:"pointer", boxShadow:'0 0 10px 0 rgb(122 122 122 / 47%)'}} onClick={() => {
                                         window.open("https://discord.gg/bFTDZvM8Uu", "__blank");
-                                    }}>Discord</Button>
+                                    }}/>
                                 </Grid>
                             </Grid>
 

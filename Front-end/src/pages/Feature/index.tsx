@@ -60,15 +60,15 @@ const Feature = (props: any) => {
     return (
             <Grid container className={innerContainer} justify="center" style={{ border: "0px solid red" }}>
 
-                <Grid item md={12}></Grid>
-                <Grid md={12} item style={{ textAlign: "center" }}> {/** text intro */}
+                <Grid item md={12} sm={12}></Grid>
+                <Grid md={12} sm={12} item style={{ textAlign: "center" }}> {/** text intro */}
                     <h1>What to expect?</h1>
                     <p style={{ fontSize: "18px" }}>Features that will make you play Maplestory again! </p>
                 </Grid>
 
-                <Grid container item md={12} style={{border:"0px solid red"}}> {/**features */}
+                <Grid container item md={12} sm={12} style={{border:"0px solid red"}}> {/**features */}
                     <Grid justify="center" className={featureContainer}  container item md={12}>
-                        <Grid item md={3}>
+                        <Grid item md={3} sm={12}>
                         <CardActionArea>
                             <CardMedia
                                 component="img"
@@ -87,7 +87,7 @@ const Feature = (props: any) => {
                         </CardActionArea>
                     </Grid>
 
-                        <Grid item md={3}>
+                        <Grid item md={3} sm={12}>
                         <CardActionArea>
                             <CardMedia
                                 component="img"
@@ -106,7 +106,7 @@ const Feature = (props: any) => {
                         </CardActionArea>
                     </Grid>
                     
-                        <Grid item md={3}>
+                        <Grid item md={3} sm={12}>
                         <CardActionArea>
                             <CardMedia
                                 component="img"
