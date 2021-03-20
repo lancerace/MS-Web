@@ -125,7 +125,7 @@ const Home = (props: any) => {
 
                                 <Grid container justify="center" item md={12}>
 
-                                    <AnnouncementItems url="1">
+                                    <AnnouncementItems url="">
                                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                                             <div>Pokemon NPC added in FM!</div>
                                             <div>16.3.21.</div>
