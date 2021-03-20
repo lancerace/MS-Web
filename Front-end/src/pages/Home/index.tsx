@@ -155,7 +155,7 @@ const Home = (props: any) => {
                                     <Route exact path="/">
                                         <AnnouncementPage title="Pokemon NPC">
                                             <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
-                                                <Grid item md={12} style={{ border: "0px solid gray" }}>
+                                                <Grid item md={12} style={{ border: "0px solid gray",fontSize:"13px" }}>
                                                     <p>
                                                     <b>Abra</b>: a mysterious tiny yellow pokemon in FM that love to teleport players anywhere.
                                                     </p>
@@ -166,7 +166,7 @@ const Home = (props: any) => {
                                                 </Grid>
 
 
-                                                <Grid style={{ border: "0px solid red", marginTop:"10vh"}} justify="center" alignItems="stretch" container>
+                                                <Grid style={{ border: "0px solid red"}} justify="center" container>
                                                     <Grid item md={3}><img src={abra} alt="abra"></img></Grid>
                                                     <Grid item md={3}><img src={chansey} style={{width:"45%"}} alt="chansey"></img></Grid>
                                                 </Grid>
@@ -176,7 +176,7 @@ const Home = (props: any) => {
                                     <Route path="/2">
                                         <AnnouncementPage title="Leveling milestone">
                                         <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
-                                                <Grid item md={12} style={{ border: "0px solid gray" }}>
+                                                <Grid item md={12} style={{ border: "0px solid gray",fontSize:"13px" }}>
                                                     Achieve Leveling milestone and be rewarded the mark of beta during official release! <p></p><Grid item md={3}><img src={markofbeta} alt="markofbeta"></img></Grid>
                                                     <p>
                                                     <b>Lv 70:</b> Mark of beta (red).  <b>Stats:</b> +5 stats to all
@@ -198,7 +198,7 @@ const Home = (props: any) => {
                                     <Route path="/3">
                                         <AnnouncementPage title="Beta release">
                                         <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
-                                                <Grid item md={12} style={{ border: "0px solid gray" }}>
+                                                <Grid item md={12} style={{ border: "0px solid gray",fontSize:"13px" }}>
                                                     Server launched! Beta release will last 4-6 months. 
                                                 </Grid>
 
