@@ -122,21 +122,21 @@ const Home = (props: any) => {
 
                                 <Grid container justify="center" item md={12}>
 
-                                    <AnnouncementItems>
+                                    <AnnouncementItems url="1">
                                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                                             <div>Pokemon NPC added in FM!</div>
                                             <div>16.3.21.</div>
                                         </div>
                                     </AnnouncementItems>
                                     <p></p>
-                                    <AnnouncementItems>
+                                    <AnnouncementItems url="2">
                                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                                             <div>Leveling milestone rewards for official release!</div>
                                             <div>12.2.21.</div>
                                         </div>
                                     </AnnouncementItems>
                                     <p></p>
-                                    <AnnouncementItems>
+                                    <AnnouncementItems url="3">
                                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                                             <div>Beta Release - Welcome to the server!</div>
                                             <div>12.2.21.</div>
@@ -146,21 +146,46 @@ const Home = (props: any) => {
                             </Grid>
 
 
-                            <Grid container item sm={12} md={12} style={{ minHeight: "35vh",opacity:"90%" }}>
-                                <AnnouncementPage title="Pokemon NPC">
-                                    <Grid container >
-                                        <Grid item md={12} style={{border:"1px solid gray",minHeight:"10vh"}}>
+                            <Grid container item sm={12} md={12} style={{ minHeight: "35vh", opacity: "90%" }}>
 
-                                        </Grid>
-                                        <Grid item md={12}>
+                                <Switch>
+                                    <Route path="/1">
+                                        <AnnouncementPage title="Pokemon NPC">
+                                            <Grid container>
+                                                <Grid item md={12} style={{ border: "1px solid gray", minHeight: "10vh" }}>
+                                                </Grid>
+                                                <Grid item md={12}>
+                                                </Grid>
+                                            </Grid>
+                                        </AnnouncementPage>
+                                    </Route>
 
-                                        </Grid>
-                                    </Grid>  
-                                </AnnouncementPage>
+                                    <Route path="/2">
+                                        <AnnouncementPage title="Leveling milestone">
+                                            <Grid container>
+                                                <Grid item md={12} style={{ border: "1px solid gray", minHeight: "10vh" }}>
+                                                </Grid>
+                                                <Grid item md={12}>
+                                                </Grid>
+                                            </Grid>
+                                        </AnnouncementPage>
+                                    </Route>
+
+                                    <Route path="/3">
+                                        <AnnouncementPage title="Beta release">
+                                            <Grid container>
+                                                <Grid item md={12} style={{ border: "1px solid gray", minHeight: "10vh" }}>
+                                                </Grid>
+                                                <Grid item md={12}>
+                                                </Grid>
+                                            </Grid>
+                                        </AnnouncementPage>
+                                    </Route>
+                                </Switch>
                             </Grid>
                         </Grid>
 
-                        <Grid container item md={3} style={{ border: "0px solid green",opacity:"90%" }}>{/**right column*/}
+                        <Grid container item md={3} style={{ border: "0px solid green", opacity: "90%" }}>{/**right column*/}
                             <Grid item md={12}>
                                 <Grid item md={12}><h3>Server</h3></Grid>
                                 <hr></hr>
