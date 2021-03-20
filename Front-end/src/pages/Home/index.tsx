@@ -155,7 +155,7 @@ const Home = (props: any) => {
                                     <Route exact path="/">
                                         <AnnouncementPage title="Pokemon NPC">
                                             <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
-                                                <Grid item md={12} style={{ border: "0px solid gray",fontSize:"13px" }}>
+                                                <Grid item md={12} style={{ border: "0px solid gray",fontSize:"13px",marginBottom:"8vh" }}>
                                                     <p>
                                                     <b>Abra</b>: a mysterious tiny yellow pokemon in FM that love to teleport players anywhere.
                                                     </p>
