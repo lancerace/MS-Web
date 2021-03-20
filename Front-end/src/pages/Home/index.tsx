@@ -9,8 +9,10 @@ import Axios from "axios";
 import { AnnouncementItems } from './Announcement/Items';
 import discordIcon from "../../assets/image/join-us-on-discord.png";
 import Clock from "react-live-clock";
-
 import AnalogClock from '../../components/Clock';
+
+import chansey from "../../assets/image/chansey.gif";
+import abra from "../../assets/image/abra.gif"
 
 interface IState {
     status: string;
@@ -146,20 +148,30 @@ const Home = (props: any) => {
                             </Grid>
 
 
-                            <Grid container item sm={12} md={12} style={{ minHeight: "35vh", opacity: "90%" }}>
+                            <Grid container item sm={12} md={12} style={{ opacity: "90%" }}>
 
                                 <Switch>
                                     <Route path="/1">
                                         <AnnouncementPage title="Pokemon NPC">
-                                            <Grid container>
-                                                <Grid item md={12} style={{ border: "1px solid gray", minHeight: "10vh" }}>
+                                            <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
+                                                <Grid item md={12} style={{ border: "0px solid gray" }}>
+                                                    <p>
+                                                    <b>Abra</b>: a mysterious tiny yellow pokemon in FM that love to teleport players anywhere.
+                                                    </p>
+
+                                                    <p>
+                                                    <b>Chansey</b>: A ball-like pokemon in FM that helps players in trading.
+                                                    </p>
                                                 </Grid>
-                                                <Grid item md={12}>
+
+
+                                                <Grid style={{ border: "0px solid red", marginTop:"10vh"}} justify="center" alignItems="stretch" container>
+                                                    <Grid item md={3}><img src={abra} alt="abra"></img></Grid>
+                                                    <Grid item md={3}><img src={chansey} style={{width:"45%"}} alt="chansey"></img></Grid>
                                                 </Grid>
                                             </Grid>
                                         </AnnouncementPage>
                                     </Route>
-
                                     <Route path="/2">
                                         <AnnouncementPage title="Leveling milestone">
                                             <Grid container>
