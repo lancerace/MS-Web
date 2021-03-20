@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 
 export function AnnouncementItems(props: any) {
 
@@ -30,5 +31,5 @@ export function AnnouncementItems(props: any) {
     }));
 
     const { item } = useStyles();
-    return (<div className={item}><a href={props.url || ""} style={{ textDecoration: "none", width: "100%" }}>{props.children}</a></div>);
+    return (<div className={item}><Link to={props.url || ""} style={{ textDecoration: "none", width: "100%" }}>{props.children}</Link></div>);
 }
