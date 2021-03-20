@@ -9,15 +9,14 @@ import Axios from "axios";
 import { AnnouncementItems } from './Announcement/Items';
 import discordIcon from "../../assets/image/join-us-on-discord.png";
 import Clock from "react-live-clock";
-//import AnalogClock from 'analog-clock-react';
-import AnalogClock from 'react-clock';
-import 'react-clock/dist/Clock.css';
+
+import AnalogClock from '../../components/Clock';
+
 interface IState {
     status: string;
     characters: string;
     accounts: string
     online: string;
-    date: Date;
 }
 
 const AnnouncementPage = (props: any) => {
@@ -29,8 +28,8 @@ const AnnouncementPage = (props: any) => {
 
 const Home = (props: any) => {
 
-    const [state, setState] = useState<IState>({ status: "", characters: "", accounts: "", online: "", date: new Date() });
-
+    const [state, setState] = useState<IState>({ status: "", characters: "", accounts: "", online: "" });
+    const [date, setDate] = useState({date:new Date()})
     const useStyles = makeStyles({
         innerContainer: {
             '& > div': {
@@ -55,10 +54,6 @@ const Home = (props: any) => {
     const { innerContainer } = useStyles();
 
     useEffect(() => {
-        setInterval(
-            () => setState({ ...state,date: new Date() }),
-            1000
-          );
 
         const fetchData = async () => {
             const online = await Axios.get(`${process.env.REACT_APP_MSLANCER_BASE_URL}/accounts/online`);
@@ -67,6 +62,11 @@ const Home = (props: any) => {
             setState({ ...state, characters: characters.data.count, accounts: accounts.data.count, online: online.data.account_online })
         }
         fetchData();
+
+        setInterval(
+            () => setDate({ date: new Date() }),
+            1000
+        );
     }, [])
 
     return (
@@ -109,7 +109,7 @@ const Home = (props: any) => {
                                 <Grid item style={{height:"3vh"}}></Grid>
 
                                 <Grid container justify="center" item style={{border:"0px solid red"}}>
-                                <AnalogClock value={state.date}></AnalogClock>
+                                <AnalogClock></AnalogClock>
                                 </Grid>       
                             </Grid>                      
                         </Grid>
