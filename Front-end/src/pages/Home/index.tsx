@@ -242,7 +242,7 @@ const Home = (props: any) => {
 
                                 <Grid item md={12} container alignItems="center">
                                     <Grid item md={6}><Typography variant="subtitle1">Exp</Typography></Grid>
-                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">x4</Typography></Grid>
+                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">x8</Typography></Grid>
                                 </Grid>
 
 
@@ -254,7 +254,7 @@ const Home = (props: any) => {
 
                                 <Grid item md={12} container alignItems="center">
                                     <Grid item md={6}><Typography variant="subtitle1">Drop</Typography></Grid>
-                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">x3</Typography></Grid>
+                                    <Grid item md={6}><Typography color="primary" variant="subtitle1">x2</Typography></Grid>
                                 </Grid>
 
                             </Grid>
