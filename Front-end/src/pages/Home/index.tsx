@@ -162,21 +162,15 @@ const Home = (props: any) => {
 
                                 <Switch>
                                     <Route exact path="/">
-                                        <AnnouncementPage title="Party Leech Mechanism Changelog">
+                                        <AnnouncementPage title="Party Leech Mechanism">
                                             <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
                                                 <Grid item md={12} style={{ border: "0px solid gray", fontSize: "13px", marginBottom: "8vh" }}>
 
-                                                    <p><Typography color="primary" variant="h6">Before</Typography></p>
-
-                                                    <ul><li>Non contributing member must be within +-5levels of monster to gain exp</li>
-                                                        <li>Non contributing member must be +-5levels with party member to gain exp</li></ul>
-
-                                                    <p><Typography color="primary" variant="h6">After</Typography></p>
-
+                                                    <Typography color="primary" variant="h6">Changelog</Typography>
                                                     <ul>
-                                                        <li>Non contributing member must be +-5levels from monster to gain exp</li>
-                                                        <li>Non contributing member must be +-40levels with party member to gain exp</li>
-                                                        <li>Non contributing member gain exp if he dealt 10% of mob hp regardless of his level with monster or with party member.</li>
+                                                        <li>Non contributing member must be +-5levels from monster to gain exp</li><p></p>
+                                                        <li>Non contributing member must be +-40levels with party member to gain exp</li><p></p>
+                                                        <li>Non contributing member gain exp if he dealt 10% of mob hp regardless of his level with monster or with party member.</li><p></p>
                                                     </ul>
                                                 </Grid>
                                             </Grid>
