@@ -166,12 +166,12 @@ const Home = (props: any) => {
                                             <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
                                                 <Grid item md={12} style={{ border: "0px solid gray", fontSize: "13px", marginBottom: "8vh" }}>
 
-                                                    <p><Typography color="primary" variant="h6">Before update</Typography></p>
+                                                    <p><Typography color="primary" variant="h6">Before</Typography></p>
 
                                                     <ul><li>Non contributing member must be within +-5levels of monster to gain exp</li>
                                                         <li>Non contributing member must be +-5levels with party member to gain exp</li></ul>
 
-                                                    <p><Typography color="primary" variant="h6">After update</Typography></p>
+                                                    <p><Typography color="primary" variant="h6">After</Typography></p>
 
                                                     <ul>
                                                         <li>Non contributing member must be +-5levels from monster to gain exp</li>
