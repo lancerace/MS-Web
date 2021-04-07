@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Button, makeStyles, Divider, Typography, CircularProgress} from '@material-ui/core';
+import { Grid, Button, makeStyles, Divider, Typography, CircularProgress } from '@material-ui/core';
 import { Route, Switch } from 'react-router-dom';
 import box_bg from '../../assets/image/cc_bg.jpg';
 import announcements from '../../assets/image/announcements.png';
@@ -24,15 +24,16 @@ interface IState {
 
 const AnnouncementPage = (props: any) => {
     return (<Grid item md={12} sm={12}>
-                <Typography variant="h6"><b>{props.title}</b></Typography>
-                <hr></hr>
-                {props.children}
-            </Grid>)}
+        <Typography variant="h6"><b>{props.title}</b></Typography>
+        <hr></hr>
+        {props.children}
+    </Grid>)
+}
 
 const Home = (props: any) => {
 
     const [state, setState] = useState<IState>({ status: "", characters: "", accounts: "", online: "" });
-    const [date, setDate] = useState({date:new Date()})
+    const [date, setDate] = useState({ date: new Date() })
     const useStyles = makeStyles({
         innerContainer: {
             '& > div': {
@@ -78,10 +79,10 @@ const Home = (props: any) => {
                 <Grid container item md={12} style={{ border: "0px solid gray" }}>
                 </Grid>
                 <Grid container item md={12} style={{ border: "0px solid red", width: "100%" }} justify="center">
-                    <Grid container style={{ border: "0px solid red"}} className={innerContainer} item md={10}> {/**inner container */}
+                    <Grid container style={{ border: "0px solid red" }} className={innerContainer} item md={10}> {/**inner container */}
 
                         <Grid container md={3} direction="column" style={{ border: "0px solid yellow", opacity: "90%" }}> {/**left column */}
-                            <Grid md={12} sm={12} container item direction="column" style={{ flex:1, maxHeight: "20vh" }}>
+                            <Grid md={12} sm={12} container item direction="column" style={{ flex: 1, maxHeight: "20vh" }}>
 
                                 <Grid item>
                                     <Typography variant="h6"><b>Clients</b></Typography>
@@ -89,14 +90,14 @@ const Home = (props: any) => {
                                 </Grid>
 
                                 <Grid container justify="center" alignItems="center">
-                                        <Button size="large" variant="contained" color="primary" style={{background:"green"}} 
+                                    <Button size="large" variant="contained" color="primary" style={{ background: "green" }}
                                         onClick={() => { window.open("https://drive.google.com/drive/folders/119JOFdmR7LeWl0sdCQ1wDiYzVDtyg6ro?usp=sharing", "_blank") }}>
-                                            Download
-                                        </Button>              
+                                        Download
+                                        </Button>
                                 </Grid>
                             </Grid>
 
-                            <Grid container item md={12} sm={12} style={{flexBasis:1}} direction="column">
+                            <Grid container item md={12} sm={12} style={{ flexBasis: 1 }} direction="column">
                                 <Grid item>
                                     <Typography variant="h6">
                                         <b>Server Time</b>
@@ -109,12 +110,12 @@ const Home = (props: any) => {
                                         timezone={'Asia/Singapore'} />
                                 </Grid>
 
-                                <Grid item style={{height:"3vh"}}></Grid>
+                                <Grid item style={{ height: "3vh" }}></Grid>
 
-                                <Grid container justify="center" item style={{border:"0px solid red"}}>
-                                <AnalogClock></AnalogClock>
-                                </Grid>       
-                            </Grid>                      
+                                <Grid container justify="center" item style={{ border: "0px solid red" }}>
+                                    <AnalogClock></AnalogClock>
+                                </Grid>
+                            </Grid>
                         </Grid>
 
                         <Grid container item md={5} sm={12}>{/**middle column*/}
@@ -125,7 +126,15 @@ const Home = (props: any) => {
 
                                 <Grid container justify="center" item md={12}>
 
-                                    <AnnouncementItems>
+                                    <AnnouncementItems url="/">
+                                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                            <div>Party Leech Updates (GMS like)</div>
+                                            <div>4.4.21.</div>
+                                        </div>
+                                    </AnnouncementItems>
+                                    <p></p>
+
+                                    <AnnouncementItems url="1">
                                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                                             <div>Pokemon NPC added in FM!</div>
                                             <div>16.3.21.</div>
@@ -149,46 +158,69 @@ const Home = (props: any) => {
                             </Grid>
 
 
-                            <Grid container item sm={12} md={12} style={{ opacity: "90%", height:"45vh" }}>
+                            <Grid container item sm={12} md={12} style={{ opacity: "90%", height: "45vh" }}>
 
                                 <Switch>
                                     <Route exact path="/">
+                                        <AnnouncementPage title="Party Leech Mechanism Changelog">
+                                            <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
+                                                <Grid item md={12} style={{ border: "0px solid gray", fontSize: "13px", marginBottom: "8vh" }}>
+
+                                                    <p><Typography color="primary" variant="h6">Before update</Typography></p>
+
+                                                    <ul><li>Non contributing member must be within +-5levels of monster to gain exp</li>
+                                                        <li>Non contributing member must be +-5levels with party member to gain exp</li></ul>
+
+                                                    <p><Typography color="primary" variant="h6">After update</Typography></p>
+
+                                                    <ul>
+                                                        <li>Non contributing member must be +-5levels from monster to gain exp</li>
+                                                        <li>Non contributing member must be +-40levels with party member to gain exp</li>
+                                                        <li>Non contributing member gain exp if he dealt 10% of mob hp regardless of his level with monster or with party member.</li>
+                                                    </ul>
+                                                </Grid>
+                                            </Grid>
+                                        </AnnouncementPage>
+                                    </Route>
+
+
+                                    <Route exact path="/1">
                                         <AnnouncementPage title="Pokemon NPC">
                                             <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
-                                                <Grid item md={12} style={{ border: "0px solid gray",fontSize:"13px",marginBottom:"8vh" }}>
+                                                <Grid item md={12} style={{ border: "0px solid gray", fontSize: "13px", marginBottom: "8vh" }}>
                                                     <p>
-                                                    <b>Abra</b>: a mysterious tiny yellow pokemon in FM that love to teleport players anywhere.
+                                                        <b>Abra</b>: a mysterious tiny yellow pokemon in FM that love to teleport players anywhere.
                                                     </p>
 
                                                     <p>
-                                                    <b>Chansey</b>: A ball-like pokemon in FM that helps players in trading.
+                                                        <b>Chansey</b>: A ball-like pokemon in FM that helps players in trading.
                                                     </p>
                                                 </Grid>
 
 
-                                                <Grid style={{ border: "0px solid red"}} justify="center" container>
+                                                <Grid style={{ border: "0px solid red" }} justify="center" container>
                                                     <Grid item md={3}><img src={abra} alt="abra"></img></Grid>
-                                                    <Grid item md={3}><img src={chansey} style={{width:"45%"}} alt="chansey"></img></Grid>
+                                                    <Grid item md={3}><img src={chansey} style={{ width: "45%" }} alt="chansey"></img></Grid>
                                                 </Grid>
                                             </Grid>
                                         </AnnouncementPage>
                                     </Route>
                                     <Route path="/2">
                                         <AnnouncementPage title="Leveling milestone">
-                                        <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
-                                                <Grid item md={12} style={{ border: "0px solid gray",fontSize:"13px" }}>
+                                            <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
+                                                <Grid item md={12} style={{ border: "0px solid gray", fontSize: "13px" }}>
                                                     Achieve Leveling milestone and be rewarded the mark of beta during official release! <p></p><Grid item md={3}><img src={markofbeta} alt="markofbeta"></img></Grid>
                                                     <p>
-                                                    <b>Lv 70:</b> Mark of beta (red).  <b>Stats:</b> +5 stats to all
+                                                        <b>Lv 70:</b> Mark of beta (red).  <b>Stats:</b> +5 stats to all
                                                     </p>
                                                     <p>
-                                                    <b>Lv 100:</b> Mark of beta (purple). <b>Stats:</b> +10 stats to all
+                                                        <b>Lv 100:</b> Mark of beta (purple). <b>Stats:</b> +10 stats to all
                                                     </p>
                                                     <p>
-                                                    <b>Lv 120:</b> Mark of beta (blue). <b>Stats:</b> +5 stats to all. 1wa, 1ma  
+                                                        <b>Lv 120:</b> Mark of beta (blue). <b>Stats:</b> +5 stats to all. 1wa, 1ma
                                                     </p>
                                                     <p>
-                                                    <b>Lv 150:</b> Mark of beta (black). <b>Stats:</b> +10 stats to all, 1 wa, 1ma
+                                                        <b>Lv 150:</b> Mark of beta (black). <b>Stats:</b> +10 stats to all, 1 wa, 1ma
                                                     </p>
                                                 </Grid>
                                             </Grid>
@@ -197,9 +229,9 @@ const Home = (props: any) => {
 
                                     <Route path="/3">
                                         <AnnouncementPage title="Beta release">
-                                        <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
-                                                <Grid item md={12} style={{ border: "0px solid gray",fontSize:"13px" }}>
-                                                    Server launched! Beta release will last 4-6 months. 
+                                            <Grid container direction="column" justify="space-between" style={{ border: "0px solid red", flex: 1 }}>
+                                                <Grid item md={12} style={{ border: "0px solid gray", fontSize: "13px" }}>
+                                                    Server launched! Beta release will last 4-6 months.
                                                 </Grid>
 
                                             </Grid>
@@ -261,10 +293,10 @@ const Home = (props: any) => {
                             <Grid item md={12}>
                                 <Grid item md={12}><h3>Social</h3></Grid>
                                 <Grid container justify="center">
-                                    
-                                    <img src={discordIcon} alt="Discord" style={{width:"200px", cursor:"pointer", boxShadow:'0 0 10px 0 rgb(122 122 122 / 47%)'}} onClick={() => {
+
+                                    <img src={discordIcon} alt="Discord" style={{ width: "200px", cursor: "pointer", boxShadow: '0 0 10px 0 rgb(122 122 122 / 47%)' }} onClick={() => {
                                         window.open("https://discord.gg/bFTDZvM8Uu", "__blank");
-                                    }}/>
+                                    }} />
                                 </Grid>
                             </Grid>
 
